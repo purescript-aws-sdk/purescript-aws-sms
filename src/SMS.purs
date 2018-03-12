@@ -20,62 +20,82 @@ import Data.StrMap as StrMap
 import AWS.Request as Request
 import AWS.Request.Types as Types
 
-serviceName = "SMS" :: String
-
 
 -- | The CreateReplicationJob API is used to create a ReplicationJob to replicate a server on AWS. Call this API to first create a ReplicationJob, which will then schedule periodic ReplicationRuns to replicate your server to AWS. Each ReplicationRun will result in the creation of an AWS AMI.
 createReplicationJob :: forall eff. CreateReplicationJobRequest -> Aff (exception :: EXCEPTION | eff) CreateReplicationJobResponse
-createReplicationJob = Request.request serviceName "createReplicationJob" 
+createReplicationJob = Request.request service method  where
+    service = Request.ServiceName "SMS"
+    method = Request.MethodName "createReplicationJob"
 
 
 -- | The DeleteReplicationJob API is used to delete a ReplicationJob, resulting in no further ReplicationRuns. This will delete the contents of the S3 bucket used to store SMS artifacts, but will not delete any AMIs created by the SMS service.
 deleteReplicationJob :: forall eff. DeleteReplicationJobRequest -> Aff (exception :: EXCEPTION | eff) DeleteReplicationJobResponse
-deleteReplicationJob = Request.request serviceName "deleteReplicationJob" 
+deleteReplicationJob = Request.request service method  where
+    service = Request.ServiceName "SMS"
+    method = Request.MethodName "deleteReplicationJob"
 
 
 -- | The DeleteServerCatalog API clears all servers from your server catalog. This means that these servers will no longer be accessible to the Server Migration Service.
 deleteServerCatalog :: forall eff. DeleteServerCatalogRequest -> Aff (exception :: EXCEPTION | eff) DeleteServerCatalogResponse
-deleteServerCatalog = Request.request serviceName "deleteServerCatalog" 
+deleteServerCatalog = Request.request service method  where
+    service = Request.ServiceName "SMS"
+    method = Request.MethodName "deleteServerCatalog"
 
 
 -- | The DisassociateConnector API will disassociate a connector from the Server Migration Service, rendering it unavailable to support replication jobs.
 disassociateConnector :: forall eff. DisassociateConnectorRequest -> Aff (exception :: EXCEPTION | eff) DisassociateConnectorResponse
-disassociateConnector = Request.request serviceName "disassociateConnector" 
+disassociateConnector = Request.request service method  where
+    service = Request.ServiceName "SMS"
+    method = Request.MethodName "disassociateConnector"
 
 
 -- | The GetConnectors API returns a list of connectors that are registered with the Server Migration Service.
 getConnectors :: forall eff. GetConnectorsRequest -> Aff (exception :: EXCEPTION | eff) GetConnectorsResponse
-getConnectors = Request.request serviceName "getConnectors" 
+getConnectors = Request.request service method  where
+    service = Request.ServiceName "SMS"
+    method = Request.MethodName "getConnectors"
 
 
 -- | The GetReplicationJobs API will return all of your ReplicationJobs and their details. This API returns a paginated list, that may be consecutively called with nextToken to retrieve all ReplicationJobs.
 getReplicationJobs :: forall eff. GetReplicationJobsRequest -> Aff (exception :: EXCEPTION | eff) GetReplicationJobsResponse
-getReplicationJobs = Request.request serviceName "getReplicationJobs" 
+getReplicationJobs = Request.request service method  where
+    service = Request.ServiceName "SMS"
+    method = Request.MethodName "getReplicationJobs"
 
 
 -- | The GetReplicationRuns API will return all ReplicationRuns for a given ReplicationJob. This API returns a paginated list, that may be consecutively called with nextToken to retrieve all ReplicationRuns for a ReplicationJob.
 getReplicationRuns :: forall eff. GetReplicationRunsRequest -> Aff (exception :: EXCEPTION | eff) GetReplicationRunsResponse
-getReplicationRuns = Request.request serviceName "getReplicationRuns" 
+getReplicationRuns = Request.request service method  where
+    service = Request.ServiceName "SMS"
+    method = Request.MethodName "getReplicationRuns"
 
 
 -- | The GetServers API returns a list of all servers in your server catalog. For this call to succeed, you must previously have called ImportServerCatalog.
 getServers :: forall eff. GetServersRequest -> Aff (exception :: EXCEPTION | eff) GetServersResponse
-getServers = Request.request serviceName "getServers" 
+getServers = Request.request service method  where
+    service = Request.ServiceName "SMS"
+    method = Request.MethodName "getServers"
 
 
 -- | The ImportServerCatalog API is used to gather the complete list of on-premises servers on your premises. This API call requires connectors to be installed and monitoring all servers you would like imported. This API call returns immediately, but may take some time to retrieve all of the servers.
 importServerCatalog :: forall eff. ImportServerCatalogRequest -> Aff (exception :: EXCEPTION | eff) ImportServerCatalogResponse
-importServerCatalog = Request.request serviceName "importServerCatalog" 
+importServerCatalog = Request.request service method  where
+    service = Request.ServiceName "SMS"
+    method = Request.MethodName "importServerCatalog"
 
 
 -- | The StartOnDemandReplicationRun API is used to start a ReplicationRun on demand (in addition to those that are scheduled based on your frequency). This ReplicationRun will start immediately. StartOnDemandReplicationRun is subject to limits on how many on demand ReplicationRuns you may call per 24-hour period.
 startOnDemandReplicationRun :: forall eff. StartOnDemandReplicationRunRequest -> Aff (exception :: EXCEPTION | eff) StartOnDemandReplicationRunResponse
-startOnDemandReplicationRun = Request.request serviceName "startOnDemandReplicationRun" 
+startOnDemandReplicationRun = Request.request service method  where
+    service = Request.ServiceName "SMS"
+    method = Request.MethodName "startOnDemandReplicationRun"
 
 
 -- | The UpdateReplicationJob API is used to change the settings of your existing ReplicationJob created using CreateReplicationJob. Calling this API will affect the next scheduled ReplicationRun.
 updateReplicationJob :: forall eff. UpdateReplicationJobRequest -> Aff (exception :: EXCEPTION | eff) UpdateReplicationJobResponse
-updateReplicationJob = Request.request serviceName "updateReplicationJob" 
+updateReplicationJob = Request.request service method  where
+    service = Request.ServiceName "SMS"
+    method = Request.MethodName "updateReplicationJob"
 
 
 -- | The AMI id for the image resulting from a Replication Run.
