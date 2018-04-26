@@ -28,7 +28,7 @@ Encode AmiId
 
 ``` purescript
 newtype Connector
-  = Connector { connectorId :: NullOrUndefined (ConnectorId), version :: NullOrUndefined (ConnectorVersion), status :: NullOrUndefined (ConnectorStatus), capabilityList :: NullOrUndefined (ConnectorCapabilityList), vmManagerName :: NullOrUndefined (VmManagerName), vmManagerType :: NullOrUndefined (VmManagerType), vmManagerId :: NullOrUndefined (VmManagerId), ipAddress :: NullOrUndefined (IpAddress), macAddress :: NullOrUndefined (MacAddress), associatedOn :: NullOrUndefined (Timestamp) }
+  = Connector { connectorId :: Maybe (ConnectorId), version :: Maybe (ConnectorVersion), status :: Maybe (ConnectorStatus), capabilityList :: Maybe (ConnectorCapabilityList), vmManagerName :: Maybe (VmManagerName), vmManagerType :: Maybe (VmManagerType), vmManagerId :: Maybe (VmManagerId), ipAddress :: Maybe (IpAddress), macAddress :: Maybe (MacAddress), associatedOn :: Maybe (Timestamp) }
 ```
 
 Object representing a Connector
@@ -53,7 +53,7 @@ Constructs Connector from required parameters
 #### `newConnector'`
 
 ``` purescript
-newConnector' :: ({ connectorId :: NullOrUndefined (ConnectorId), version :: NullOrUndefined (ConnectorVersion), status :: NullOrUndefined (ConnectorStatus), capabilityList :: NullOrUndefined (ConnectorCapabilityList), vmManagerName :: NullOrUndefined (VmManagerName), vmManagerType :: NullOrUndefined (VmManagerType), vmManagerId :: NullOrUndefined (VmManagerId), ipAddress :: NullOrUndefined (IpAddress), macAddress :: NullOrUndefined (MacAddress), associatedOn :: NullOrUndefined (Timestamp) } -> { connectorId :: NullOrUndefined (ConnectorId), version :: NullOrUndefined (ConnectorVersion), status :: NullOrUndefined (ConnectorStatus), capabilityList :: NullOrUndefined (ConnectorCapabilityList), vmManagerName :: NullOrUndefined (VmManagerName), vmManagerType :: NullOrUndefined (VmManagerType), vmManagerId :: NullOrUndefined (VmManagerId), ipAddress :: NullOrUndefined (IpAddress), macAddress :: NullOrUndefined (MacAddress), associatedOn :: NullOrUndefined (Timestamp) }) -> Connector
+newConnector' :: ({ connectorId :: Maybe (ConnectorId), version :: Maybe (ConnectorVersion), status :: Maybe (ConnectorStatus), capabilityList :: Maybe (ConnectorCapabilityList), vmManagerName :: Maybe (VmManagerName), vmManagerType :: Maybe (VmManagerType), vmManagerId :: Maybe (VmManagerId), ipAddress :: Maybe (IpAddress), macAddress :: Maybe (MacAddress), associatedOn :: Maybe (Timestamp) } -> { connectorId :: Maybe (ConnectorId), version :: Maybe (ConnectorVersion), status :: Maybe (ConnectorStatus), capabilityList :: Maybe (ConnectorCapabilityList), vmManagerName :: Maybe (VmManagerName), vmManagerType :: Maybe (VmManagerType), vmManagerId :: Maybe (VmManagerId), ipAddress :: Maybe (IpAddress), macAddress :: Maybe (MacAddress), associatedOn :: Maybe (Timestamp) }) -> Connector
 ```
 
 Constructs Connector's fields from required parameters
@@ -170,7 +170,7 @@ Encode ConnectorVersion
 
 ``` purescript
 newtype CreateReplicationJobRequest
-  = CreateReplicationJobRequest { serverId :: ServerId, seedReplicationTime :: Timestamp, frequency :: Frequency, licenseType :: NullOrUndefined (LicenseType), roleName :: NullOrUndefined (RoleName), description :: NullOrUndefined (Description) }
+  = CreateReplicationJobRequest { serverId :: ServerId, seedReplicationTime :: Timestamp, frequency :: Frequency, licenseType :: Maybe (LicenseType), roleName :: Maybe (RoleName), description :: Maybe (Description) }
 ```
 
 ##### Instances
@@ -193,7 +193,7 @@ Constructs CreateReplicationJobRequest from required parameters
 #### `newCreateReplicationJobRequest'`
 
 ``` purescript
-newCreateReplicationJobRequest' :: Frequency -> Timestamp -> ServerId -> ({ serverId :: ServerId, seedReplicationTime :: Timestamp, frequency :: Frequency, licenseType :: NullOrUndefined (LicenseType), roleName :: NullOrUndefined (RoleName), description :: NullOrUndefined (Description) } -> { serverId :: ServerId, seedReplicationTime :: Timestamp, frequency :: Frequency, licenseType :: NullOrUndefined (LicenseType), roleName :: NullOrUndefined (RoleName), description :: NullOrUndefined (Description) }) -> CreateReplicationJobRequest
+newCreateReplicationJobRequest' :: Frequency -> Timestamp -> ServerId -> ({ serverId :: ServerId, seedReplicationTime :: Timestamp, frequency :: Frequency, licenseType :: Maybe (LicenseType), roleName :: Maybe (RoleName), description :: Maybe (Description) } -> { serverId :: ServerId, seedReplicationTime :: Timestamp, frequency :: Frequency, licenseType :: Maybe (LicenseType), roleName :: Maybe (RoleName), description :: Maybe (Description) }) -> CreateReplicationJobRequest
 ```
 
 Constructs CreateReplicationJobRequest's fields from required parameters
@@ -202,7 +202,7 @@ Constructs CreateReplicationJobRequest's fields from required parameters
 
 ``` purescript
 newtype CreateReplicationJobResponse
-  = CreateReplicationJobResponse { replicationJobId :: NullOrUndefined (ReplicationJobId) }
+  = CreateReplicationJobResponse { replicationJobId :: Maybe (ReplicationJobId) }
 ```
 
 ##### Instances
@@ -225,7 +225,7 @@ Constructs CreateReplicationJobResponse from required parameters
 #### `newCreateReplicationJobResponse'`
 
 ``` purescript
-newCreateReplicationJobResponse' :: ({ replicationJobId :: NullOrUndefined (ReplicationJobId) } -> { replicationJobId :: NullOrUndefined (ReplicationJobId) }) -> CreateReplicationJobResponse
+newCreateReplicationJobResponse' :: ({ replicationJobId :: Maybe (ReplicationJobId) } -> { replicationJobId :: Maybe (ReplicationJobId) }) -> CreateReplicationJobResponse
 ```
 
 Constructs CreateReplicationJobResponse's fields from required parameters
@@ -416,7 +416,7 @@ Encode Frequency
 
 ``` purescript
 newtype GetConnectorsRequest
-  = GetConnectorsRequest { nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults) }
+  = GetConnectorsRequest { nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults) }
 ```
 
 ##### Instances
@@ -439,7 +439,7 @@ Constructs GetConnectorsRequest from required parameters
 #### `newGetConnectorsRequest'`
 
 ``` purescript
-newGetConnectorsRequest' :: ({ nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults) } -> { nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults) }) -> GetConnectorsRequest
+newGetConnectorsRequest' :: ({ nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults) } -> { nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults) }) -> GetConnectorsRequest
 ```
 
 Constructs GetConnectorsRequest's fields from required parameters
@@ -448,7 +448,7 @@ Constructs GetConnectorsRequest's fields from required parameters
 
 ``` purescript
 newtype GetConnectorsResponse
-  = GetConnectorsResponse { connectorList :: NullOrUndefined (ConnectorList), nextToken :: NullOrUndefined (NextToken) }
+  = GetConnectorsResponse { connectorList :: Maybe (ConnectorList), nextToken :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -471,7 +471,7 @@ Constructs GetConnectorsResponse from required parameters
 #### `newGetConnectorsResponse'`
 
 ``` purescript
-newGetConnectorsResponse' :: ({ connectorList :: NullOrUndefined (ConnectorList), nextToken :: NullOrUndefined (NextToken) } -> { connectorList :: NullOrUndefined (ConnectorList), nextToken :: NullOrUndefined (NextToken) }) -> GetConnectorsResponse
+newGetConnectorsResponse' :: ({ connectorList :: Maybe (ConnectorList), nextToken :: Maybe (NextToken) } -> { connectorList :: Maybe (ConnectorList), nextToken :: Maybe (NextToken) }) -> GetConnectorsResponse
 ```
 
 Constructs GetConnectorsResponse's fields from required parameters
@@ -480,7 +480,7 @@ Constructs GetConnectorsResponse's fields from required parameters
 
 ``` purescript
 newtype GetReplicationJobsRequest
-  = GetReplicationJobsRequest { replicationJobId :: NullOrUndefined (ReplicationJobId), nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults) }
+  = GetReplicationJobsRequest { replicationJobId :: Maybe (ReplicationJobId), nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults) }
 ```
 
 ##### Instances
@@ -503,7 +503,7 @@ Constructs GetReplicationJobsRequest from required parameters
 #### `newGetReplicationJobsRequest'`
 
 ``` purescript
-newGetReplicationJobsRequest' :: ({ replicationJobId :: NullOrUndefined (ReplicationJobId), nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults) } -> { replicationJobId :: NullOrUndefined (ReplicationJobId), nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults) }) -> GetReplicationJobsRequest
+newGetReplicationJobsRequest' :: ({ replicationJobId :: Maybe (ReplicationJobId), nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults) } -> { replicationJobId :: Maybe (ReplicationJobId), nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults) }) -> GetReplicationJobsRequest
 ```
 
 Constructs GetReplicationJobsRequest's fields from required parameters
@@ -512,7 +512,7 @@ Constructs GetReplicationJobsRequest's fields from required parameters
 
 ``` purescript
 newtype GetReplicationJobsResponse
-  = GetReplicationJobsResponse { replicationJobList :: NullOrUndefined (ReplicationJobList), nextToken :: NullOrUndefined (NextToken) }
+  = GetReplicationJobsResponse { replicationJobList :: Maybe (ReplicationJobList), nextToken :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -535,7 +535,7 @@ Constructs GetReplicationJobsResponse from required parameters
 #### `newGetReplicationJobsResponse'`
 
 ``` purescript
-newGetReplicationJobsResponse' :: ({ replicationJobList :: NullOrUndefined (ReplicationJobList), nextToken :: NullOrUndefined (NextToken) } -> { replicationJobList :: NullOrUndefined (ReplicationJobList), nextToken :: NullOrUndefined (NextToken) }) -> GetReplicationJobsResponse
+newGetReplicationJobsResponse' :: ({ replicationJobList :: Maybe (ReplicationJobList), nextToken :: Maybe (NextToken) } -> { replicationJobList :: Maybe (ReplicationJobList), nextToken :: Maybe (NextToken) }) -> GetReplicationJobsResponse
 ```
 
 Constructs GetReplicationJobsResponse's fields from required parameters
@@ -544,7 +544,7 @@ Constructs GetReplicationJobsResponse's fields from required parameters
 
 ``` purescript
 newtype GetReplicationRunsRequest
-  = GetReplicationRunsRequest { replicationJobId :: ReplicationJobId, nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults) }
+  = GetReplicationRunsRequest { replicationJobId :: ReplicationJobId, nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults) }
 ```
 
 ##### Instances
@@ -567,7 +567,7 @@ Constructs GetReplicationRunsRequest from required parameters
 #### `newGetReplicationRunsRequest'`
 
 ``` purescript
-newGetReplicationRunsRequest' :: ReplicationJobId -> ({ replicationJobId :: ReplicationJobId, nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults) } -> { replicationJobId :: ReplicationJobId, nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults) }) -> GetReplicationRunsRequest
+newGetReplicationRunsRequest' :: ReplicationJobId -> ({ replicationJobId :: ReplicationJobId, nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults) } -> { replicationJobId :: ReplicationJobId, nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults) }) -> GetReplicationRunsRequest
 ```
 
 Constructs GetReplicationRunsRequest's fields from required parameters
@@ -576,7 +576,7 @@ Constructs GetReplicationRunsRequest's fields from required parameters
 
 ``` purescript
 newtype GetReplicationRunsResponse
-  = GetReplicationRunsResponse { replicationJob :: NullOrUndefined (ReplicationJob), replicationRunList :: NullOrUndefined (ReplicationRunList), nextToken :: NullOrUndefined (NextToken) }
+  = GetReplicationRunsResponse { replicationJob :: Maybe (ReplicationJob), replicationRunList :: Maybe (ReplicationRunList), nextToken :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -599,7 +599,7 @@ Constructs GetReplicationRunsResponse from required parameters
 #### `newGetReplicationRunsResponse'`
 
 ``` purescript
-newGetReplicationRunsResponse' :: ({ replicationJob :: NullOrUndefined (ReplicationJob), replicationRunList :: NullOrUndefined (ReplicationRunList), nextToken :: NullOrUndefined (NextToken) } -> { replicationJob :: NullOrUndefined (ReplicationJob), replicationRunList :: NullOrUndefined (ReplicationRunList), nextToken :: NullOrUndefined (NextToken) }) -> GetReplicationRunsResponse
+newGetReplicationRunsResponse' :: ({ replicationJob :: Maybe (ReplicationJob), replicationRunList :: Maybe (ReplicationRunList), nextToken :: Maybe (NextToken) } -> { replicationJob :: Maybe (ReplicationJob), replicationRunList :: Maybe (ReplicationRunList), nextToken :: Maybe (NextToken) }) -> GetReplicationRunsResponse
 ```
 
 Constructs GetReplicationRunsResponse's fields from required parameters
@@ -608,7 +608,7 @@ Constructs GetReplicationRunsResponse's fields from required parameters
 
 ``` purescript
 newtype GetServersRequest
-  = GetServersRequest { nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults) }
+  = GetServersRequest { nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults) }
 ```
 
 ##### Instances
@@ -631,7 +631,7 @@ Constructs GetServersRequest from required parameters
 #### `newGetServersRequest'`
 
 ``` purescript
-newGetServersRequest' :: ({ nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults) } -> { nextToken :: NullOrUndefined (NextToken), maxResults :: NullOrUndefined (MaxResults) }) -> GetServersRequest
+newGetServersRequest' :: ({ nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults) } -> { nextToken :: Maybe (NextToken), maxResults :: Maybe (MaxResults) }) -> GetServersRequest
 ```
 
 Constructs GetServersRequest's fields from required parameters
@@ -640,7 +640,7 @@ Constructs GetServersRequest's fields from required parameters
 
 ``` purescript
 newtype GetServersResponse
-  = GetServersResponse { lastModifiedOn :: NullOrUndefined (Timestamp), serverCatalogStatus :: NullOrUndefined (ServerCatalogStatus), serverList :: NullOrUndefined (ServerList), nextToken :: NullOrUndefined (NextToken) }
+  = GetServersResponse { lastModifiedOn :: Maybe (Timestamp), serverCatalogStatus :: Maybe (ServerCatalogStatus), serverList :: Maybe (ServerList), nextToken :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -663,7 +663,7 @@ Constructs GetServersResponse from required parameters
 #### `newGetServersResponse'`
 
 ``` purescript
-newGetServersResponse' :: ({ lastModifiedOn :: NullOrUndefined (Timestamp), serverCatalogStatus :: NullOrUndefined (ServerCatalogStatus), serverList :: NullOrUndefined (ServerList), nextToken :: NullOrUndefined (NextToken) } -> { lastModifiedOn :: NullOrUndefined (Timestamp), serverCatalogStatus :: NullOrUndefined (ServerCatalogStatus), serverList :: NullOrUndefined (ServerList), nextToken :: NullOrUndefined (NextToken) }) -> GetServersResponse
+newGetServersResponse' :: ({ lastModifiedOn :: Maybe (Timestamp), serverCatalogStatus :: Maybe (ServerCatalogStatus), serverList :: Maybe (ServerList), nextToken :: Maybe (NextToken) } -> { lastModifiedOn :: Maybe (Timestamp), serverCatalogStatus :: Maybe (ServerCatalogStatus), serverList :: Maybe (ServerList), nextToken :: Maybe (NextToken) }) -> GetServersResponse
 ```
 
 Constructs GetServersResponse's fields from required parameters
@@ -704,7 +704,7 @@ Encode ImportServerCatalogResponse
 
 ``` purescript
 newtype InternalError
-  = InternalError { message :: NullOrUndefined (ErrorMessage) }
+  = InternalError { message :: Maybe (ErrorMessage) }
 ```
 
 An internal error has occured.
@@ -729,7 +729,7 @@ Constructs InternalError from required parameters
 #### `newInternalError'`
 
 ``` purescript
-newInternalError' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> InternalError
+newInternalError' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> InternalError
 ```
 
 Constructs InternalError's fields from required parameters
@@ -738,7 +738,7 @@ Constructs InternalError's fields from required parameters
 
 ``` purescript
 newtype InvalidParameterException
-  = InvalidParameterException { message :: NullOrUndefined (ErrorMessage) }
+  = InvalidParameterException { message :: Maybe (ErrorMessage) }
 ```
 
 A parameter specified in the request is not valid, is unsupported, or cannot be used.
@@ -763,7 +763,7 @@ Constructs InvalidParameterException from required parameters
 #### `newInvalidParameterException'`
 
 ``` purescript
-newInvalidParameterException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> InvalidParameterException
+newInvalidParameterException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> InvalidParameterException
 ```
 
 Constructs InvalidParameterException's fields from required parameters
@@ -844,7 +844,7 @@ Encode MaxResults
 
 ``` purescript
 newtype MissingRequiredParameterException
-  = MissingRequiredParameterException { message :: NullOrUndefined (ErrorMessage) }
+  = MissingRequiredParameterException { message :: Maybe (ErrorMessage) }
 ```
 
 The request is missing a required parameter. Ensure that you have supplied all the required parameters for the request.
@@ -869,7 +869,7 @@ Constructs MissingRequiredParameterException from required parameters
 #### `newMissingRequiredParameterException'`
 
 ``` purescript
-newMissingRequiredParameterException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> MissingRequiredParameterException
+newMissingRequiredParameterException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> MissingRequiredParameterException
 ```
 
 Constructs MissingRequiredParameterException's fields from required parameters
@@ -896,7 +896,7 @@ Encode NextToken
 
 ``` purescript
 newtype NoConnectorsAvailableException
-  = NoConnectorsAvailableException { message :: NullOrUndefined (ErrorMessage) }
+  = NoConnectorsAvailableException { message :: Maybe (ErrorMessage) }
 ```
 
 No connectors are available to handle this request. Please associate connector(s) and verify any existing connectors are healthy and can respond to requests.
@@ -921,7 +921,7 @@ Constructs NoConnectorsAvailableException from required parameters
 #### `newNoConnectorsAvailableException'`
 
 ``` purescript
-newNoConnectorsAvailableException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> NoConnectorsAvailableException
+newNoConnectorsAvailableException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> NoConnectorsAvailableException
 ```
 
 Constructs NoConnectorsAvailableException's fields from required parameters
@@ -930,7 +930,7 @@ Constructs NoConnectorsAvailableException's fields from required parameters
 
 ``` purescript
 newtype OperationNotPermittedException
-  = OperationNotPermittedException { message :: NullOrUndefined (ErrorMessage) }
+  = OperationNotPermittedException { message :: Maybe (ErrorMessage) }
 ```
 
 The specified operation is not allowed. This error can occur for a number of reasons; for example, you might be trying to start a Replication Run before seed Replication Run.
@@ -955,7 +955,7 @@ Constructs OperationNotPermittedException from required parameters
 #### `newOperationNotPermittedException'`
 
 ``` purescript
-newOperationNotPermittedException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> OperationNotPermittedException
+newOperationNotPermittedException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> OperationNotPermittedException
 ```
 
 Constructs OperationNotPermittedException's fields from required parameters
@@ -964,7 +964,7 @@ Constructs OperationNotPermittedException's fields from required parameters
 
 ``` purescript
 newtype ReplicationJob
-  = ReplicationJob { replicationJobId :: NullOrUndefined (ReplicationJobId), serverId :: NullOrUndefined (ServerId), serverType :: NullOrUndefined (ServerType), vmServer :: NullOrUndefined (VmServer), seedReplicationTime :: NullOrUndefined (Timestamp), frequency :: NullOrUndefined (Frequency), nextReplicationRunStartTime :: NullOrUndefined (Timestamp), licenseType :: NullOrUndefined (LicenseType), roleName :: NullOrUndefined (RoleName), latestAmiId :: NullOrUndefined (AmiId), state :: NullOrUndefined (ReplicationJobState), statusMessage :: NullOrUndefined (ReplicationJobStatusMessage), description :: NullOrUndefined (Description), replicationRunList :: NullOrUndefined (ReplicationRunList) }
+  = ReplicationJob { replicationJobId :: Maybe (ReplicationJobId), serverId :: Maybe (ServerId), serverType :: Maybe (ServerType), vmServer :: Maybe (VmServer), seedReplicationTime :: Maybe (Timestamp), frequency :: Maybe (Frequency), nextReplicationRunStartTime :: Maybe (Timestamp), licenseType :: Maybe (LicenseType), roleName :: Maybe (RoleName), latestAmiId :: Maybe (AmiId), state :: Maybe (ReplicationJobState), statusMessage :: Maybe (ReplicationJobStatusMessage), description :: Maybe (Description), replicationRunList :: Maybe (ReplicationRunList) }
 ```
 
 Object representing a Replication Job
@@ -989,7 +989,7 @@ Constructs ReplicationJob from required parameters
 #### `newReplicationJob'`
 
 ``` purescript
-newReplicationJob' :: ({ replicationJobId :: NullOrUndefined (ReplicationJobId), serverId :: NullOrUndefined (ServerId), serverType :: NullOrUndefined (ServerType), vmServer :: NullOrUndefined (VmServer), seedReplicationTime :: NullOrUndefined (Timestamp), frequency :: NullOrUndefined (Frequency), nextReplicationRunStartTime :: NullOrUndefined (Timestamp), licenseType :: NullOrUndefined (LicenseType), roleName :: NullOrUndefined (RoleName), latestAmiId :: NullOrUndefined (AmiId), state :: NullOrUndefined (ReplicationJobState), statusMessage :: NullOrUndefined (ReplicationJobStatusMessage), description :: NullOrUndefined (Description), replicationRunList :: NullOrUndefined (ReplicationRunList) } -> { replicationJobId :: NullOrUndefined (ReplicationJobId), serverId :: NullOrUndefined (ServerId), serverType :: NullOrUndefined (ServerType), vmServer :: NullOrUndefined (VmServer), seedReplicationTime :: NullOrUndefined (Timestamp), frequency :: NullOrUndefined (Frequency), nextReplicationRunStartTime :: NullOrUndefined (Timestamp), licenseType :: NullOrUndefined (LicenseType), roleName :: NullOrUndefined (RoleName), latestAmiId :: NullOrUndefined (AmiId), state :: NullOrUndefined (ReplicationJobState), statusMessage :: NullOrUndefined (ReplicationJobStatusMessage), description :: NullOrUndefined (Description), replicationRunList :: NullOrUndefined (ReplicationRunList) }) -> ReplicationJob
+newReplicationJob' :: ({ replicationJobId :: Maybe (ReplicationJobId), serverId :: Maybe (ServerId), serverType :: Maybe (ServerType), vmServer :: Maybe (VmServer), seedReplicationTime :: Maybe (Timestamp), frequency :: Maybe (Frequency), nextReplicationRunStartTime :: Maybe (Timestamp), licenseType :: Maybe (LicenseType), roleName :: Maybe (RoleName), latestAmiId :: Maybe (AmiId), state :: Maybe (ReplicationJobState), statusMessage :: Maybe (ReplicationJobStatusMessage), description :: Maybe (Description), replicationRunList :: Maybe (ReplicationRunList) } -> { replicationJobId :: Maybe (ReplicationJobId), serverId :: Maybe (ServerId), serverType :: Maybe (ServerType), vmServer :: Maybe (VmServer), seedReplicationTime :: Maybe (Timestamp), frequency :: Maybe (Frequency), nextReplicationRunStartTime :: Maybe (Timestamp), licenseType :: Maybe (LicenseType), roleName :: Maybe (RoleName), latestAmiId :: Maybe (AmiId), state :: Maybe (ReplicationJobState), statusMessage :: Maybe (ReplicationJobStatusMessage), description :: Maybe (Description), replicationRunList :: Maybe (ReplicationRunList) }) -> ReplicationJob
 ```
 
 Constructs ReplicationJob's fields from required parameters
@@ -998,7 +998,7 @@ Constructs ReplicationJob's fields from required parameters
 
 ``` purescript
 newtype ReplicationJobAlreadyExistsException
-  = ReplicationJobAlreadyExistsException { message :: NullOrUndefined (ErrorMessage) }
+  = ReplicationJobAlreadyExistsException { message :: Maybe (ErrorMessage) }
 ```
 
 An active Replication Job already exists for the specified server.
@@ -1023,7 +1023,7 @@ Constructs ReplicationJobAlreadyExistsException from required parameters
 #### `newReplicationJobAlreadyExistsException'`
 
 ``` purescript
-newReplicationJobAlreadyExistsException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> ReplicationJobAlreadyExistsException
+newReplicationJobAlreadyExistsException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> ReplicationJobAlreadyExistsException
 ```
 
 Constructs ReplicationJobAlreadyExistsException's fields from required parameters
@@ -1068,7 +1068,7 @@ Encode ReplicationJobList
 
 ``` purescript
 newtype ReplicationJobNotFoundException
-  = ReplicationJobNotFoundException { message :: NullOrUndefined (ErrorMessage) }
+  = ReplicationJobNotFoundException { message :: Maybe (ErrorMessage) }
 ```
 
 The specified Replication Job cannot be found.
@@ -1093,7 +1093,7 @@ Constructs ReplicationJobNotFoundException from required parameters
 #### `newReplicationJobNotFoundException'`
 
 ``` purescript
-newReplicationJobNotFoundException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> ReplicationJobNotFoundException
+newReplicationJobNotFoundException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> ReplicationJobNotFoundException
 ```
 
 Constructs ReplicationJobNotFoundException's fields from required parameters
@@ -1156,7 +1156,7 @@ Encode ReplicationJobTerminated
 
 ``` purescript
 newtype ReplicationRun
-  = ReplicationRun { replicationRunId :: NullOrUndefined (ReplicationRunId), state :: NullOrUndefined (ReplicationRunState), "type" :: NullOrUndefined (ReplicationRunType), statusMessage :: NullOrUndefined (ReplicationRunStatusMessage), amiId :: NullOrUndefined (AmiId), scheduledStartTime :: NullOrUndefined (Timestamp), completedTime :: NullOrUndefined (Timestamp), description :: NullOrUndefined (Description) }
+  = ReplicationRun { replicationRunId :: Maybe (ReplicationRunId), state :: Maybe (ReplicationRunState), "type" :: Maybe (ReplicationRunType), statusMessage :: Maybe (ReplicationRunStatusMessage), amiId :: Maybe (AmiId), scheduledStartTime :: Maybe (Timestamp), completedTime :: Maybe (Timestamp), description :: Maybe (Description) }
 ```
 
 Object representing a Replication Run
@@ -1181,7 +1181,7 @@ Constructs ReplicationRun from required parameters
 #### `newReplicationRun'`
 
 ``` purescript
-newReplicationRun' :: ({ replicationRunId :: NullOrUndefined (ReplicationRunId), state :: NullOrUndefined (ReplicationRunState), "type" :: NullOrUndefined (ReplicationRunType), statusMessage :: NullOrUndefined (ReplicationRunStatusMessage), amiId :: NullOrUndefined (AmiId), scheduledStartTime :: NullOrUndefined (Timestamp), completedTime :: NullOrUndefined (Timestamp), description :: NullOrUndefined (Description) } -> { replicationRunId :: NullOrUndefined (ReplicationRunId), state :: NullOrUndefined (ReplicationRunState), "type" :: NullOrUndefined (ReplicationRunType), statusMessage :: NullOrUndefined (ReplicationRunStatusMessage), amiId :: NullOrUndefined (AmiId), scheduledStartTime :: NullOrUndefined (Timestamp), completedTime :: NullOrUndefined (Timestamp), description :: NullOrUndefined (Description) }) -> ReplicationRun
+newReplicationRun' :: ({ replicationRunId :: Maybe (ReplicationRunId), state :: Maybe (ReplicationRunState), "type" :: Maybe (ReplicationRunType), statusMessage :: Maybe (ReplicationRunStatusMessage), amiId :: Maybe (AmiId), scheduledStartTime :: Maybe (Timestamp), completedTime :: Maybe (Timestamp), description :: Maybe (Description) } -> { replicationRunId :: Maybe (ReplicationRunId), state :: Maybe (ReplicationRunState), "type" :: Maybe (ReplicationRunType), statusMessage :: Maybe (ReplicationRunStatusMessage), amiId :: Maybe (AmiId), scheduledStartTime :: Maybe (Timestamp), completedTime :: Maybe (Timestamp), description :: Maybe (Description) }) -> ReplicationRun
 ```
 
 Constructs ReplicationRun's fields from required parameters
@@ -1208,7 +1208,7 @@ Encode ReplicationRunId
 
 ``` purescript
 newtype ReplicationRunLimitExceededException
-  = ReplicationRunLimitExceededException { message :: NullOrUndefined (ErrorMessage) }
+  = ReplicationRunLimitExceededException { message :: Maybe (ErrorMessage) }
 ```
 
 This user has exceeded the maximum allowed Replication Run limit.
@@ -1233,7 +1233,7 @@ Constructs ReplicationRunLimitExceededException from required parameters
 #### `newReplicationRunLimitExceededException'`
 
 ``` purescript
-newReplicationRunLimitExceededException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> ReplicationRunLimitExceededException
+newReplicationRunLimitExceededException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> ReplicationRunLimitExceededException
 ```
 
 Constructs ReplicationRunLimitExceededException's fields from required parameters
@@ -1332,7 +1332,7 @@ Encode RoleName
 
 ``` purescript
 newtype Server
-  = Server { serverId :: NullOrUndefined (ServerId), serverType :: NullOrUndefined (ServerType), vmServer :: NullOrUndefined (VmServer), replicationJobId :: NullOrUndefined (ReplicationJobId), replicationJobTerminated :: NullOrUndefined (ReplicationJobTerminated) }
+  = Server { serverId :: Maybe (ServerId), serverType :: Maybe (ServerType), vmServer :: Maybe (VmServer), replicationJobId :: Maybe (ReplicationJobId), replicationJobTerminated :: Maybe (ReplicationJobTerminated) }
 ```
 
 Object representing a server
@@ -1357,7 +1357,7 @@ Constructs Server from required parameters
 #### `newServer'`
 
 ``` purescript
-newServer' :: ({ serverId :: NullOrUndefined (ServerId), serverType :: NullOrUndefined (ServerType), vmServer :: NullOrUndefined (VmServer), replicationJobId :: NullOrUndefined (ReplicationJobId), replicationJobTerminated :: NullOrUndefined (ReplicationJobTerminated) } -> { serverId :: NullOrUndefined (ServerId), serverType :: NullOrUndefined (ServerType), vmServer :: NullOrUndefined (VmServer), replicationJobId :: NullOrUndefined (ReplicationJobId), replicationJobTerminated :: NullOrUndefined (ReplicationJobTerminated) }) -> Server
+newServer' :: ({ serverId :: Maybe (ServerId), serverType :: Maybe (ServerType), vmServer :: Maybe (VmServer), replicationJobId :: Maybe (ReplicationJobId), replicationJobTerminated :: Maybe (ReplicationJobTerminated) } -> { serverId :: Maybe (ServerId), serverType :: Maybe (ServerType), vmServer :: Maybe (VmServer), replicationJobId :: Maybe (ReplicationJobId), replicationJobTerminated :: Maybe (ReplicationJobTerminated) }) -> Server
 ```
 
 Constructs Server's fields from required parameters
@@ -1366,7 +1366,7 @@ Constructs Server's fields from required parameters
 
 ``` purescript
 newtype ServerCannotBeReplicatedException
-  = ServerCannotBeReplicatedException { message :: NullOrUndefined (ErrorMessage) }
+  = ServerCannotBeReplicatedException { message :: Maybe (ErrorMessage) }
 ```
 
 The provided server cannot be replicated.
@@ -1391,7 +1391,7 @@ Constructs ServerCannotBeReplicatedException from required parameters
 #### `newServerCannotBeReplicatedException'`
 
 ``` purescript
-newServerCannotBeReplicatedException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> ServerCannotBeReplicatedException
+newServerCannotBeReplicatedException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> ServerCannotBeReplicatedException
 ```
 
 Constructs ServerCannotBeReplicatedException's fields from required parameters
@@ -1472,7 +1472,7 @@ Encode ServerType
 
 ``` purescript
 newtype StartOnDemandReplicationRunRequest
-  = StartOnDemandReplicationRunRequest { replicationJobId :: ReplicationJobId, description :: NullOrUndefined (Description) }
+  = StartOnDemandReplicationRunRequest { replicationJobId :: ReplicationJobId, description :: Maybe (Description) }
 ```
 
 ##### Instances
@@ -1495,7 +1495,7 @@ Constructs StartOnDemandReplicationRunRequest from required parameters
 #### `newStartOnDemandReplicationRunRequest'`
 
 ``` purescript
-newStartOnDemandReplicationRunRequest' :: ReplicationJobId -> ({ replicationJobId :: ReplicationJobId, description :: NullOrUndefined (Description) } -> { replicationJobId :: ReplicationJobId, description :: NullOrUndefined (Description) }) -> StartOnDemandReplicationRunRequest
+newStartOnDemandReplicationRunRequest' :: ReplicationJobId -> ({ replicationJobId :: ReplicationJobId, description :: Maybe (Description) } -> { replicationJobId :: ReplicationJobId, description :: Maybe (Description) }) -> StartOnDemandReplicationRunRequest
 ```
 
 Constructs StartOnDemandReplicationRunRequest's fields from required parameters
@@ -1504,7 +1504,7 @@ Constructs StartOnDemandReplicationRunRequest's fields from required parameters
 
 ``` purescript
 newtype StartOnDemandReplicationRunResponse
-  = StartOnDemandReplicationRunResponse { replicationRunId :: NullOrUndefined (ReplicationRunId) }
+  = StartOnDemandReplicationRunResponse { replicationRunId :: Maybe (ReplicationRunId) }
 ```
 
 ##### Instances
@@ -1527,7 +1527,7 @@ Constructs StartOnDemandReplicationRunResponse from required parameters
 #### `newStartOnDemandReplicationRunResponse'`
 
 ``` purescript
-newStartOnDemandReplicationRunResponse' :: ({ replicationRunId :: NullOrUndefined (ReplicationRunId) } -> { replicationRunId :: NullOrUndefined (ReplicationRunId) }) -> StartOnDemandReplicationRunResponse
+newStartOnDemandReplicationRunResponse' :: ({ replicationRunId :: Maybe (ReplicationRunId) } -> { replicationRunId :: Maybe (ReplicationRunId) }) -> StartOnDemandReplicationRunResponse
 ```
 
 Constructs StartOnDemandReplicationRunResponse's fields from required parameters
@@ -1536,7 +1536,7 @@ Constructs StartOnDemandReplicationRunResponse's fields from required parameters
 
 ``` purescript
 newtype UnauthorizedOperationException
-  = UnauthorizedOperationException { message :: NullOrUndefined (ErrorMessage) }
+  = UnauthorizedOperationException { message :: Maybe (ErrorMessage) }
 ```
 
 This user does not have permissions to perform this operation.
@@ -1561,7 +1561,7 @@ Constructs UnauthorizedOperationException from required parameters
 #### `newUnauthorizedOperationException'`
 
 ``` purescript
-newUnauthorizedOperationException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> UnauthorizedOperationException
+newUnauthorizedOperationException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> UnauthorizedOperationException
 ```
 
 Constructs UnauthorizedOperationException's fields from required parameters
@@ -1570,7 +1570,7 @@ Constructs UnauthorizedOperationException's fields from required parameters
 
 ``` purescript
 newtype UpdateReplicationJobRequest
-  = UpdateReplicationJobRequest { replicationJobId :: ReplicationJobId, frequency :: NullOrUndefined (Frequency), nextReplicationRunStartTime :: NullOrUndefined (Timestamp), licenseType :: NullOrUndefined (LicenseType), roleName :: NullOrUndefined (RoleName), description :: NullOrUndefined (Description) }
+  = UpdateReplicationJobRequest { replicationJobId :: ReplicationJobId, frequency :: Maybe (Frequency), nextReplicationRunStartTime :: Maybe (Timestamp), licenseType :: Maybe (LicenseType), roleName :: Maybe (RoleName), description :: Maybe (Description) }
 ```
 
 ##### Instances
@@ -1593,7 +1593,7 @@ Constructs UpdateReplicationJobRequest from required parameters
 #### `newUpdateReplicationJobRequest'`
 
 ``` purescript
-newUpdateReplicationJobRequest' :: ReplicationJobId -> ({ replicationJobId :: ReplicationJobId, frequency :: NullOrUndefined (Frequency), nextReplicationRunStartTime :: NullOrUndefined (Timestamp), licenseType :: NullOrUndefined (LicenseType), roleName :: NullOrUndefined (RoleName), description :: NullOrUndefined (Description) } -> { replicationJobId :: ReplicationJobId, frequency :: NullOrUndefined (Frequency), nextReplicationRunStartTime :: NullOrUndefined (Timestamp), licenseType :: NullOrUndefined (LicenseType), roleName :: NullOrUndefined (RoleName), description :: NullOrUndefined (Description) }) -> UpdateReplicationJobRequest
+newUpdateReplicationJobRequest' :: ReplicationJobId -> ({ replicationJobId :: ReplicationJobId, frequency :: Maybe (Frequency), nextReplicationRunStartTime :: Maybe (Timestamp), licenseType :: Maybe (LicenseType), roleName :: Maybe (RoleName), description :: Maybe (Description) } -> { replicationJobId :: ReplicationJobId, frequency :: Maybe (Frequency), nextReplicationRunStartTime :: Maybe (Timestamp), licenseType :: Maybe (LicenseType), roleName :: Maybe (RoleName), description :: Maybe (Description) }) -> UpdateReplicationJobRequest
 ```
 
 Constructs UpdateReplicationJobRequest's fields from required parameters
@@ -1726,7 +1726,7 @@ Encode VmPath
 
 ``` purescript
 newtype VmServer
-  = VmServer { vmServerAddress :: NullOrUndefined (VmServerAddress), vmName :: NullOrUndefined (VmName), vmManagerName :: NullOrUndefined (VmManagerName), vmManagerType :: NullOrUndefined (VmManagerType), vmPath :: NullOrUndefined (VmPath) }
+  = VmServer { vmServerAddress :: Maybe (VmServerAddress), vmName :: Maybe (VmName), vmManagerName :: Maybe (VmManagerName), vmManagerType :: Maybe (VmManagerType), vmPath :: Maybe (VmPath) }
 ```
 
 Object representing a VM server
@@ -1751,7 +1751,7 @@ Constructs VmServer from required parameters
 #### `newVmServer'`
 
 ``` purescript
-newVmServer' :: ({ vmServerAddress :: NullOrUndefined (VmServerAddress), vmName :: NullOrUndefined (VmName), vmManagerName :: NullOrUndefined (VmManagerName), vmManagerType :: NullOrUndefined (VmManagerType), vmPath :: NullOrUndefined (VmPath) } -> { vmServerAddress :: NullOrUndefined (VmServerAddress), vmName :: NullOrUndefined (VmName), vmManagerName :: NullOrUndefined (VmManagerName), vmManagerType :: NullOrUndefined (VmManagerType), vmPath :: NullOrUndefined (VmPath) }) -> VmServer
+newVmServer' :: ({ vmServerAddress :: Maybe (VmServerAddress), vmName :: Maybe (VmName), vmManagerName :: Maybe (VmManagerName), vmManagerType :: Maybe (VmManagerType), vmPath :: Maybe (VmPath) } -> { vmServerAddress :: Maybe (VmServerAddress), vmName :: Maybe (VmName), vmManagerName :: Maybe (VmManagerName), vmManagerType :: Maybe (VmManagerType), vmPath :: Maybe (VmPath) }) -> VmServer
 ```
 
 Constructs VmServer's fields from required parameters
@@ -1760,7 +1760,7 @@ Constructs VmServer's fields from required parameters
 
 ``` purescript
 newtype VmServerAddress
-  = VmServerAddress { vmManagerId :: NullOrUndefined (VmManagerId), vmId :: NullOrUndefined (VmId) }
+  = VmServerAddress { vmManagerId :: Maybe (VmManagerId), vmId :: Maybe (VmId) }
 ```
 
 Object representing a server's location
@@ -1785,7 +1785,7 @@ Constructs VmServerAddress from required parameters
 #### `newVmServerAddress'`
 
 ``` purescript
-newVmServerAddress' :: ({ vmManagerId :: NullOrUndefined (VmManagerId), vmId :: NullOrUndefined (VmId) } -> { vmManagerId :: NullOrUndefined (VmManagerId), vmId :: NullOrUndefined (VmId) }) -> VmServerAddress
+newVmServerAddress' :: ({ vmManagerId :: Maybe (VmManagerId), vmId :: Maybe (VmId) } -> { vmManagerId :: Maybe (VmManagerId), vmId :: Maybe (VmId) }) -> VmServerAddress
 ```
 
 Constructs VmServerAddress's fields from required parameters

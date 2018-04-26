@@ -5,7 +5,6 @@ import Prelude
 import Data.Foreign.Class (class Decode, class Encode)
 import Data.Foreign.Generic (defaultOptions, genericDecode, genericEncode)
 import Data.Foreign.Generic.Types (Options)
-import Data.Foreign.NullOrUndefined (NullOrUndefined(..))
 import Data.Generic.Rep (class Generic)
 import Data.Generic.Rep.Show (genericShow)
 import Data.Maybe (Maybe(..))
@@ -30,16 +29,16 @@ instance encodeAmiId :: Encode AmiId where encode = genericEncode options
 
 -- | Object representing a Connector
 newtype Connector = Connector 
-  { "connectorId" :: NullOrUndefined (ConnectorId)
-  , "version" :: NullOrUndefined (ConnectorVersion)
-  , "status" :: NullOrUndefined (ConnectorStatus)
-  , "capabilityList" :: NullOrUndefined (ConnectorCapabilityList)
-  , "vmManagerName" :: NullOrUndefined (VmManagerName)
-  , "vmManagerType" :: NullOrUndefined (VmManagerType)
-  , "vmManagerId" :: NullOrUndefined (VmManagerId)
-  , "ipAddress" :: NullOrUndefined (IpAddress)
-  , "macAddress" :: NullOrUndefined (MacAddress)
-  , "associatedOn" :: NullOrUndefined (Types.Timestamp)
+  { "connectorId" :: Maybe (ConnectorId)
+  , "version" :: Maybe (ConnectorVersion)
+  , "status" :: Maybe (ConnectorStatus)
+  , "capabilityList" :: Maybe (ConnectorCapabilityList)
+  , "vmManagerName" :: Maybe (VmManagerName)
+  , "vmManagerType" :: Maybe (VmManagerType)
+  , "vmManagerId" :: Maybe (VmManagerId)
+  , "ipAddress" :: Maybe (IpAddress)
+  , "macAddress" :: Maybe (MacAddress)
+  , "associatedOn" :: Maybe (Types.Timestamp)
   }
 derive instance newtypeConnector :: Newtype Connector _
 derive instance repGenericConnector :: Generic Connector _
@@ -49,12 +48,12 @@ instance encodeConnector :: Encode Connector where encode = genericEncode option
 
 -- | Constructs Connector from required parameters
 newConnector :: Connector
-newConnector  = Connector { "associatedOn": (NullOrUndefined Nothing), "capabilityList": (NullOrUndefined Nothing), "connectorId": (NullOrUndefined Nothing), "ipAddress": (NullOrUndefined Nothing), "macAddress": (NullOrUndefined Nothing), "status": (NullOrUndefined Nothing), "version": (NullOrUndefined Nothing), "vmManagerId": (NullOrUndefined Nothing), "vmManagerName": (NullOrUndefined Nothing), "vmManagerType": (NullOrUndefined Nothing) }
+newConnector  = Connector { "associatedOn": Nothing, "capabilityList": Nothing, "connectorId": Nothing, "ipAddress": Nothing, "macAddress": Nothing, "status": Nothing, "version": Nothing, "vmManagerId": Nothing, "vmManagerName": Nothing, "vmManagerType": Nothing }
 
 -- | Constructs Connector's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newConnector' :: ( { "connectorId" :: NullOrUndefined (ConnectorId) , "version" :: NullOrUndefined (ConnectorVersion) , "status" :: NullOrUndefined (ConnectorStatus) , "capabilityList" :: NullOrUndefined (ConnectorCapabilityList) , "vmManagerName" :: NullOrUndefined (VmManagerName) , "vmManagerType" :: NullOrUndefined (VmManagerType) , "vmManagerId" :: NullOrUndefined (VmManagerId) , "ipAddress" :: NullOrUndefined (IpAddress) , "macAddress" :: NullOrUndefined (MacAddress) , "associatedOn" :: NullOrUndefined (Types.Timestamp) } -> {"connectorId" :: NullOrUndefined (ConnectorId) , "version" :: NullOrUndefined (ConnectorVersion) , "status" :: NullOrUndefined (ConnectorStatus) , "capabilityList" :: NullOrUndefined (ConnectorCapabilityList) , "vmManagerName" :: NullOrUndefined (VmManagerName) , "vmManagerType" :: NullOrUndefined (VmManagerType) , "vmManagerId" :: NullOrUndefined (VmManagerId) , "ipAddress" :: NullOrUndefined (IpAddress) , "macAddress" :: NullOrUndefined (MacAddress) , "associatedOn" :: NullOrUndefined (Types.Timestamp) } ) -> Connector
-newConnector'  customize = (Connector <<< customize) { "associatedOn": (NullOrUndefined Nothing), "capabilityList": (NullOrUndefined Nothing), "connectorId": (NullOrUndefined Nothing), "ipAddress": (NullOrUndefined Nothing), "macAddress": (NullOrUndefined Nothing), "status": (NullOrUndefined Nothing), "version": (NullOrUndefined Nothing), "vmManagerId": (NullOrUndefined Nothing), "vmManagerName": (NullOrUndefined Nothing), "vmManagerType": (NullOrUndefined Nothing) }
+newConnector' :: ( { "connectorId" :: Maybe (ConnectorId) , "version" :: Maybe (ConnectorVersion) , "status" :: Maybe (ConnectorStatus) , "capabilityList" :: Maybe (ConnectorCapabilityList) , "vmManagerName" :: Maybe (VmManagerName) , "vmManagerType" :: Maybe (VmManagerType) , "vmManagerId" :: Maybe (VmManagerId) , "ipAddress" :: Maybe (IpAddress) , "macAddress" :: Maybe (MacAddress) , "associatedOn" :: Maybe (Types.Timestamp) } -> {"connectorId" :: Maybe (ConnectorId) , "version" :: Maybe (ConnectorVersion) , "status" :: Maybe (ConnectorStatus) , "capabilityList" :: Maybe (ConnectorCapabilityList) , "vmManagerName" :: Maybe (VmManagerName) , "vmManagerType" :: Maybe (VmManagerType) , "vmManagerId" :: Maybe (VmManagerId) , "ipAddress" :: Maybe (IpAddress) , "macAddress" :: Maybe (MacAddress) , "associatedOn" :: Maybe (Types.Timestamp) } ) -> Connector
+newConnector'  customize = (Connector <<< customize) { "associatedOn": Nothing, "capabilityList": Nothing, "connectorId": Nothing, "ipAddress": Nothing, "macAddress": Nothing, "status": Nothing, "version": Nothing, "vmManagerId": Nothing, "vmManagerName": Nothing, "vmManagerType": Nothing }
 
 
 
@@ -122,9 +121,9 @@ newtype CreateReplicationJobRequest = CreateReplicationJobRequest
   { "serverId" :: (ServerId)
   , "seedReplicationTime" :: (Types.Timestamp)
   , "frequency" :: (Frequency)
-  , "licenseType" :: NullOrUndefined (LicenseType)
-  , "roleName" :: NullOrUndefined (RoleName)
-  , "description" :: NullOrUndefined (Description)
+  , "licenseType" :: Maybe (LicenseType)
+  , "roleName" :: Maybe (RoleName)
+  , "description" :: Maybe (Description)
   }
 derive instance newtypeCreateReplicationJobRequest :: Newtype CreateReplicationJobRequest _
 derive instance repGenericCreateReplicationJobRequest :: Generic CreateReplicationJobRequest _
@@ -134,17 +133,17 @@ instance encodeCreateReplicationJobRequest :: Encode CreateReplicationJobRequest
 
 -- | Constructs CreateReplicationJobRequest from required parameters
 newCreateReplicationJobRequest :: Frequency -> Types.Timestamp -> ServerId -> CreateReplicationJobRequest
-newCreateReplicationJobRequest _frequency _seedReplicationTime _serverId = CreateReplicationJobRequest { "frequency": _frequency, "seedReplicationTime": _seedReplicationTime, "serverId": _serverId, "description": (NullOrUndefined Nothing), "licenseType": (NullOrUndefined Nothing), "roleName": (NullOrUndefined Nothing) }
+newCreateReplicationJobRequest _frequency _seedReplicationTime _serverId = CreateReplicationJobRequest { "frequency": _frequency, "seedReplicationTime": _seedReplicationTime, "serverId": _serverId, "description": Nothing, "licenseType": Nothing, "roleName": Nothing }
 
 -- | Constructs CreateReplicationJobRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateReplicationJobRequest' :: Frequency -> Types.Timestamp -> ServerId -> ( { "serverId" :: (ServerId) , "seedReplicationTime" :: (Types.Timestamp) , "frequency" :: (Frequency) , "licenseType" :: NullOrUndefined (LicenseType) , "roleName" :: NullOrUndefined (RoleName) , "description" :: NullOrUndefined (Description) } -> {"serverId" :: (ServerId) , "seedReplicationTime" :: (Types.Timestamp) , "frequency" :: (Frequency) , "licenseType" :: NullOrUndefined (LicenseType) , "roleName" :: NullOrUndefined (RoleName) , "description" :: NullOrUndefined (Description) } ) -> CreateReplicationJobRequest
-newCreateReplicationJobRequest' _frequency _seedReplicationTime _serverId customize = (CreateReplicationJobRequest <<< customize) { "frequency": _frequency, "seedReplicationTime": _seedReplicationTime, "serverId": _serverId, "description": (NullOrUndefined Nothing), "licenseType": (NullOrUndefined Nothing), "roleName": (NullOrUndefined Nothing) }
+newCreateReplicationJobRequest' :: Frequency -> Types.Timestamp -> ServerId -> ( { "serverId" :: (ServerId) , "seedReplicationTime" :: (Types.Timestamp) , "frequency" :: (Frequency) , "licenseType" :: Maybe (LicenseType) , "roleName" :: Maybe (RoleName) , "description" :: Maybe (Description) } -> {"serverId" :: (ServerId) , "seedReplicationTime" :: (Types.Timestamp) , "frequency" :: (Frequency) , "licenseType" :: Maybe (LicenseType) , "roleName" :: Maybe (RoleName) , "description" :: Maybe (Description) } ) -> CreateReplicationJobRequest
+newCreateReplicationJobRequest' _frequency _seedReplicationTime _serverId customize = (CreateReplicationJobRequest <<< customize) { "frequency": _frequency, "seedReplicationTime": _seedReplicationTime, "serverId": _serverId, "description": Nothing, "licenseType": Nothing, "roleName": Nothing }
 
 
 
 newtype CreateReplicationJobResponse = CreateReplicationJobResponse 
-  { "replicationJobId" :: NullOrUndefined (ReplicationJobId)
+  { "replicationJobId" :: Maybe (ReplicationJobId)
   }
 derive instance newtypeCreateReplicationJobResponse :: Newtype CreateReplicationJobResponse _
 derive instance repGenericCreateReplicationJobResponse :: Generic CreateReplicationJobResponse _
@@ -154,12 +153,12 @@ instance encodeCreateReplicationJobResponse :: Encode CreateReplicationJobRespon
 
 -- | Constructs CreateReplicationJobResponse from required parameters
 newCreateReplicationJobResponse :: CreateReplicationJobResponse
-newCreateReplicationJobResponse  = CreateReplicationJobResponse { "replicationJobId": (NullOrUndefined Nothing) }
+newCreateReplicationJobResponse  = CreateReplicationJobResponse { "replicationJobId": Nothing }
 
 -- | Constructs CreateReplicationJobResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateReplicationJobResponse' :: ( { "replicationJobId" :: NullOrUndefined (ReplicationJobId) } -> {"replicationJobId" :: NullOrUndefined (ReplicationJobId) } ) -> CreateReplicationJobResponse
-newCreateReplicationJobResponse'  customize = (CreateReplicationJobResponse <<< customize) { "replicationJobId": (NullOrUndefined Nothing) }
+newCreateReplicationJobResponse' :: ( { "replicationJobId" :: Maybe (ReplicationJobId) } -> {"replicationJobId" :: Maybe (ReplicationJobId) } ) -> CreateReplicationJobResponse
+newCreateReplicationJobResponse'  customize = (CreateReplicationJobResponse <<< customize) { "replicationJobId": Nothing }
 
 
 
@@ -270,8 +269,8 @@ instance encodeFrequency :: Encode Frequency where encode = genericEncode option
 
 
 newtype GetConnectorsRequest = GetConnectorsRequest 
-  { "nextToken" :: NullOrUndefined (NextToken)
-  , "maxResults" :: NullOrUndefined (MaxResults)
+  { "nextToken" :: Maybe (NextToken)
+  , "maxResults" :: Maybe (MaxResults)
   }
 derive instance newtypeGetConnectorsRequest :: Newtype GetConnectorsRequest _
 derive instance repGenericGetConnectorsRequest :: Generic GetConnectorsRequest _
@@ -281,18 +280,18 @@ instance encodeGetConnectorsRequest :: Encode GetConnectorsRequest where encode 
 
 -- | Constructs GetConnectorsRequest from required parameters
 newGetConnectorsRequest :: GetConnectorsRequest
-newGetConnectorsRequest  = GetConnectorsRequest { "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newGetConnectorsRequest  = GetConnectorsRequest { "maxResults": Nothing, "nextToken": Nothing }
 
 -- | Constructs GetConnectorsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetConnectorsRequest' :: ( { "nextToken" :: NullOrUndefined (NextToken) , "maxResults" :: NullOrUndefined (MaxResults) } -> {"nextToken" :: NullOrUndefined (NextToken) , "maxResults" :: NullOrUndefined (MaxResults) } ) -> GetConnectorsRequest
-newGetConnectorsRequest'  customize = (GetConnectorsRequest <<< customize) { "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newGetConnectorsRequest' :: ( { "nextToken" :: Maybe (NextToken) , "maxResults" :: Maybe (MaxResults) } -> {"nextToken" :: Maybe (NextToken) , "maxResults" :: Maybe (MaxResults) } ) -> GetConnectorsRequest
+newGetConnectorsRequest'  customize = (GetConnectorsRequest <<< customize) { "maxResults": Nothing, "nextToken": Nothing }
 
 
 
 newtype GetConnectorsResponse = GetConnectorsResponse 
-  { "connectorList" :: NullOrUndefined (ConnectorList)
-  , "nextToken" :: NullOrUndefined (NextToken)
+  { "connectorList" :: Maybe (ConnectorList)
+  , "nextToken" :: Maybe (NextToken)
   }
 derive instance newtypeGetConnectorsResponse :: Newtype GetConnectorsResponse _
 derive instance repGenericGetConnectorsResponse :: Generic GetConnectorsResponse _
@@ -302,19 +301,19 @@ instance encodeGetConnectorsResponse :: Encode GetConnectorsResponse where encod
 
 -- | Constructs GetConnectorsResponse from required parameters
 newGetConnectorsResponse :: GetConnectorsResponse
-newGetConnectorsResponse  = GetConnectorsResponse { "connectorList": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newGetConnectorsResponse  = GetConnectorsResponse { "connectorList": Nothing, "nextToken": Nothing }
 
 -- | Constructs GetConnectorsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetConnectorsResponse' :: ( { "connectorList" :: NullOrUndefined (ConnectorList) , "nextToken" :: NullOrUndefined (NextToken) } -> {"connectorList" :: NullOrUndefined (ConnectorList) , "nextToken" :: NullOrUndefined (NextToken) } ) -> GetConnectorsResponse
-newGetConnectorsResponse'  customize = (GetConnectorsResponse <<< customize) { "connectorList": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newGetConnectorsResponse' :: ( { "connectorList" :: Maybe (ConnectorList) , "nextToken" :: Maybe (NextToken) } -> {"connectorList" :: Maybe (ConnectorList) , "nextToken" :: Maybe (NextToken) } ) -> GetConnectorsResponse
+newGetConnectorsResponse'  customize = (GetConnectorsResponse <<< customize) { "connectorList": Nothing, "nextToken": Nothing }
 
 
 
 newtype GetReplicationJobsRequest = GetReplicationJobsRequest 
-  { "replicationJobId" :: NullOrUndefined (ReplicationJobId)
-  , "nextToken" :: NullOrUndefined (NextToken)
-  , "maxResults" :: NullOrUndefined (MaxResults)
+  { "replicationJobId" :: Maybe (ReplicationJobId)
+  , "nextToken" :: Maybe (NextToken)
+  , "maxResults" :: Maybe (MaxResults)
   }
 derive instance newtypeGetReplicationJobsRequest :: Newtype GetReplicationJobsRequest _
 derive instance repGenericGetReplicationJobsRequest :: Generic GetReplicationJobsRequest _
@@ -324,18 +323,18 @@ instance encodeGetReplicationJobsRequest :: Encode GetReplicationJobsRequest whe
 
 -- | Constructs GetReplicationJobsRequest from required parameters
 newGetReplicationJobsRequest :: GetReplicationJobsRequest
-newGetReplicationJobsRequest  = GetReplicationJobsRequest { "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing), "replicationJobId": (NullOrUndefined Nothing) }
+newGetReplicationJobsRequest  = GetReplicationJobsRequest { "maxResults": Nothing, "nextToken": Nothing, "replicationJobId": Nothing }
 
 -- | Constructs GetReplicationJobsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetReplicationJobsRequest' :: ( { "replicationJobId" :: NullOrUndefined (ReplicationJobId) , "nextToken" :: NullOrUndefined (NextToken) , "maxResults" :: NullOrUndefined (MaxResults) } -> {"replicationJobId" :: NullOrUndefined (ReplicationJobId) , "nextToken" :: NullOrUndefined (NextToken) , "maxResults" :: NullOrUndefined (MaxResults) } ) -> GetReplicationJobsRequest
-newGetReplicationJobsRequest'  customize = (GetReplicationJobsRequest <<< customize) { "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing), "replicationJobId": (NullOrUndefined Nothing) }
+newGetReplicationJobsRequest' :: ( { "replicationJobId" :: Maybe (ReplicationJobId) , "nextToken" :: Maybe (NextToken) , "maxResults" :: Maybe (MaxResults) } -> {"replicationJobId" :: Maybe (ReplicationJobId) , "nextToken" :: Maybe (NextToken) , "maxResults" :: Maybe (MaxResults) } ) -> GetReplicationJobsRequest
+newGetReplicationJobsRequest'  customize = (GetReplicationJobsRequest <<< customize) { "maxResults": Nothing, "nextToken": Nothing, "replicationJobId": Nothing }
 
 
 
 newtype GetReplicationJobsResponse = GetReplicationJobsResponse 
-  { "replicationJobList" :: NullOrUndefined (ReplicationJobList)
-  , "nextToken" :: NullOrUndefined (NextToken)
+  { "replicationJobList" :: Maybe (ReplicationJobList)
+  , "nextToken" :: Maybe (NextToken)
   }
 derive instance newtypeGetReplicationJobsResponse :: Newtype GetReplicationJobsResponse _
 derive instance repGenericGetReplicationJobsResponse :: Generic GetReplicationJobsResponse _
@@ -345,19 +344,19 @@ instance encodeGetReplicationJobsResponse :: Encode GetReplicationJobsResponse w
 
 -- | Constructs GetReplicationJobsResponse from required parameters
 newGetReplicationJobsResponse :: GetReplicationJobsResponse
-newGetReplicationJobsResponse  = GetReplicationJobsResponse { "nextToken": (NullOrUndefined Nothing), "replicationJobList": (NullOrUndefined Nothing) }
+newGetReplicationJobsResponse  = GetReplicationJobsResponse { "nextToken": Nothing, "replicationJobList": Nothing }
 
 -- | Constructs GetReplicationJobsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetReplicationJobsResponse' :: ( { "replicationJobList" :: NullOrUndefined (ReplicationJobList) , "nextToken" :: NullOrUndefined (NextToken) } -> {"replicationJobList" :: NullOrUndefined (ReplicationJobList) , "nextToken" :: NullOrUndefined (NextToken) } ) -> GetReplicationJobsResponse
-newGetReplicationJobsResponse'  customize = (GetReplicationJobsResponse <<< customize) { "nextToken": (NullOrUndefined Nothing), "replicationJobList": (NullOrUndefined Nothing) }
+newGetReplicationJobsResponse' :: ( { "replicationJobList" :: Maybe (ReplicationJobList) , "nextToken" :: Maybe (NextToken) } -> {"replicationJobList" :: Maybe (ReplicationJobList) , "nextToken" :: Maybe (NextToken) } ) -> GetReplicationJobsResponse
+newGetReplicationJobsResponse'  customize = (GetReplicationJobsResponse <<< customize) { "nextToken": Nothing, "replicationJobList": Nothing }
 
 
 
 newtype GetReplicationRunsRequest = GetReplicationRunsRequest 
   { "replicationJobId" :: (ReplicationJobId)
-  , "nextToken" :: NullOrUndefined (NextToken)
-  , "maxResults" :: NullOrUndefined (MaxResults)
+  , "nextToken" :: Maybe (NextToken)
+  , "maxResults" :: Maybe (MaxResults)
   }
 derive instance newtypeGetReplicationRunsRequest :: Newtype GetReplicationRunsRequest _
 derive instance repGenericGetReplicationRunsRequest :: Generic GetReplicationRunsRequest _
@@ -367,19 +366,19 @@ instance encodeGetReplicationRunsRequest :: Encode GetReplicationRunsRequest whe
 
 -- | Constructs GetReplicationRunsRequest from required parameters
 newGetReplicationRunsRequest :: ReplicationJobId -> GetReplicationRunsRequest
-newGetReplicationRunsRequest _replicationJobId = GetReplicationRunsRequest { "replicationJobId": _replicationJobId, "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newGetReplicationRunsRequest _replicationJobId = GetReplicationRunsRequest { "replicationJobId": _replicationJobId, "maxResults": Nothing, "nextToken": Nothing }
 
 -- | Constructs GetReplicationRunsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetReplicationRunsRequest' :: ReplicationJobId -> ( { "replicationJobId" :: (ReplicationJobId) , "nextToken" :: NullOrUndefined (NextToken) , "maxResults" :: NullOrUndefined (MaxResults) } -> {"replicationJobId" :: (ReplicationJobId) , "nextToken" :: NullOrUndefined (NextToken) , "maxResults" :: NullOrUndefined (MaxResults) } ) -> GetReplicationRunsRequest
-newGetReplicationRunsRequest' _replicationJobId customize = (GetReplicationRunsRequest <<< customize) { "replicationJobId": _replicationJobId, "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newGetReplicationRunsRequest' :: ReplicationJobId -> ( { "replicationJobId" :: (ReplicationJobId) , "nextToken" :: Maybe (NextToken) , "maxResults" :: Maybe (MaxResults) } -> {"replicationJobId" :: (ReplicationJobId) , "nextToken" :: Maybe (NextToken) , "maxResults" :: Maybe (MaxResults) } ) -> GetReplicationRunsRequest
+newGetReplicationRunsRequest' _replicationJobId customize = (GetReplicationRunsRequest <<< customize) { "replicationJobId": _replicationJobId, "maxResults": Nothing, "nextToken": Nothing }
 
 
 
 newtype GetReplicationRunsResponse = GetReplicationRunsResponse 
-  { "replicationJob" :: NullOrUndefined (ReplicationJob)
-  , "replicationRunList" :: NullOrUndefined (ReplicationRunList)
-  , "nextToken" :: NullOrUndefined (NextToken)
+  { "replicationJob" :: Maybe (ReplicationJob)
+  , "replicationRunList" :: Maybe (ReplicationRunList)
+  , "nextToken" :: Maybe (NextToken)
   }
 derive instance newtypeGetReplicationRunsResponse :: Newtype GetReplicationRunsResponse _
 derive instance repGenericGetReplicationRunsResponse :: Generic GetReplicationRunsResponse _
@@ -389,18 +388,18 @@ instance encodeGetReplicationRunsResponse :: Encode GetReplicationRunsResponse w
 
 -- | Constructs GetReplicationRunsResponse from required parameters
 newGetReplicationRunsResponse :: GetReplicationRunsResponse
-newGetReplicationRunsResponse  = GetReplicationRunsResponse { "nextToken": (NullOrUndefined Nothing), "replicationJob": (NullOrUndefined Nothing), "replicationRunList": (NullOrUndefined Nothing) }
+newGetReplicationRunsResponse  = GetReplicationRunsResponse { "nextToken": Nothing, "replicationJob": Nothing, "replicationRunList": Nothing }
 
 -- | Constructs GetReplicationRunsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetReplicationRunsResponse' :: ( { "replicationJob" :: NullOrUndefined (ReplicationJob) , "replicationRunList" :: NullOrUndefined (ReplicationRunList) , "nextToken" :: NullOrUndefined (NextToken) } -> {"replicationJob" :: NullOrUndefined (ReplicationJob) , "replicationRunList" :: NullOrUndefined (ReplicationRunList) , "nextToken" :: NullOrUndefined (NextToken) } ) -> GetReplicationRunsResponse
-newGetReplicationRunsResponse'  customize = (GetReplicationRunsResponse <<< customize) { "nextToken": (NullOrUndefined Nothing), "replicationJob": (NullOrUndefined Nothing), "replicationRunList": (NullOrUndefined Nothing) }
+newGetReplicationRunsResponse' :: ( { "replicationJob" :: Maybe (ReplicationJob) , "replicationRunList" :: Maybe (ReplicationRunList) , "nextToken" :: Maybe (NextToken) } -> {"replicationJob" :: Maybe (ReplicationJob) , "replicationRunList" :: Maybe (ReplicationRunList) , "nextToken" :: Maybe (NextToken) } ) -> GetReplicationRunsResponse
+newGetReplicationRunsResponse'  customize = (GetReplicationRunsResponse <<< customize) { "nextToken": Nothing, "replicationJob": Nothing, "replicationRunList": Nothing }
 
 
 
 newtype GetServersRequest = GetServersRequest 
-  { "nextToken" :: NullOrUndefined (NextToken)
-  , "maxResults" :: NullOrUndefined (MaxResults)
+  { "nextToken" :: Maybe (NextToken)
+  , "maxResults" :: Maybe (MaxResults)
   }
 derive instance newtypeGetServersRequest :: Newtype GetServersRequest _
 derive instance repGenericGetServersRequest :: Generic GetServersRequest _
@@ -410,20 +409,20 @@ instance encodeGetServersRequest :: Encode GetServersRequest where encode = gene
 
 -- | Constructs GetServersRequest from required parameters
 newGetServersRequest :: GetServersRequest
-newGetServersRequest  = GetServersRequest { "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newGetServersRequest  = GetServersRequest { "maxResults": Nothing, "nextToken": Nothing }
 
 -- | Constructs GetServersRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetServersRequest' :: ( { "nextToken" :: NullOrUndefined (NextToken) , "maxResults" :: NullOrUndefined (MaxResults) } -> {"nextToken" :: NullOrUndefined (NextToken) , "maxResults" :: NullOrUndefined (MaxResults) } ) -> GetServersRequest
-newGetServersRequest'  customize = (GetServersRequest <<< customize) { "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newGetServersRequest' :: ( { "nextToken" :: Maybe (NextToken) , "maxResults" :: Maybe (MaxResults) } -> {"nextToken" :: Maybe (NextToken) , "maxResults" :: Maybe (MaxResults) } ) -> GetServersRequest
+newGetServersRequest'  customize = (GetServersRequest <<< customize) { "maxResults": Nothing, "nextToken": Nothing }
 
 
 
 newtype GetServersResponse = GetServersResponse 
-  { "lastModifiedOn" :: NullOrUndefined (Types.Timestamp)
-  , "serverCatalogStatus" :: NullOrUndefined (ServerCatalogStatus)
-  , "serverList" :: NullOrUndefined (ServerList)
-  , "nextToken" :: NullOrUndefined (NextToken)
+  { "lastModifiedOn" :: Maybe (Types.Timestamp)
+  , "serverCatalogStatus" :: Maybe (ServerCatalogStatus)
+  , "serverList" :: Maybe (ServerList)
+  , "nextToken" :: Maybe (NextToken)
   }
 derive instance newtypeGetServersResponse :: Newtype GetServersResponse _
 derive instance repGenericGetServersResponse :: Generic GetServersResponse _
@@ -433,12 +432,12 @@ instance encodeGetServersResponse :: Encode GetServersResponse where encode = ge
 
 -- | Constructs GetServersResponse from required parameters
 newGetServersResponse :: GetServersResponse
-newGetServersResponse  = GetServersResponse { "lastModifiedOn": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing), "serverCatalogStatus": (NullOrUndefined Nothing), "serverList": (NullOrUndefined Nothing) }
+newGetServersResponse  = GetServersResponse { "lastModifiedOn": Nothing, "nextToken": Nothing, "serverCatalogStatus": Nothing, "serverList": Nothing }
 
 -- | Constructs GetServersResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetServersResponse' :: ( { "lastModifiedOn" :: NullOrUndefined (Types.Timestamp) , "serverCatalogStatus" :: NullOrUndefined (ServerCatalogStatus) , "serverList" :: NullOrUndefined (ServerList) , "nextToken" :: NullOrUndefined (NextToken) } -> {"lastModifiedOn" :: NullOrUndefined (Types.Timestamp) , "serverCatalogStatus" :: NullOrUndefined (ServerCatalogStatus) , "serverList" :: NullOrUndefined (ServerList) , "nextToken" :: NullOrUndefined (NextToken) } ) -> GetServersResponse
-newGetServersResponse'  customize = (GetServersResponse <<< customize) { "lastModifiedOn": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing), "serverCatalogStatus": (NullOrUndefined Nothing), "serverList": (NullOrUndefined Nothing) }
+newGetServersResponse' :: ( { "lastModifiedOn" :: Maybe (Types.Timestamp) , "serverCatalogStatus" :: Maybe (ServerCatalogStatus) , "serverList" :: Maybe (ServerList) , "nextToken" :: Maybe (NextToken) } -> {"lastModifiedOn" :: Maybe (Types.Timestamp) , "serverCatalogStatus" :: Maybe (ServerCatalogStatus) , "serverList" :: Maybe (ServerList) , "nextToken" :: Maybe (NextToken) } ) -> GetServersResponse
+newGetServersResponse'  customize = (GetServersResponse <<< customize) { "lastModifiedOn": Nothing, "nextToken": Nothing, "serverCatalogStatus": Nothing, "serverList": Nothing }
 
 
 
@@ -462,7 +461,7 @@ instance encodeImportServerCatalogResponse :: Encode ImportServerCatalogResponse
 
 -- | An internal error has occured.
 newtype InternalError = InternalError 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeInternalError :: Newtype InternalError _
 derive instance repGenericInternalError :: Generic InternalError _
@@ -472,18 +471,18 @@ instance encodeInternalError :: Encode InternalError where encode = genericEncod
 
 -- | Constructs InternalError from required parameters
 newInternalError :: InternalError
-newInternalError  = InternalError { "message": (NullOrUndefined Nothing) }
+newInternalError  = InternalError { "message": Nothing }
 
 -- | Constructs InternalError's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInternalError' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> InternalError
-newInternalError'  customize = (InternalError <<< customize) { "message": (NullOrUndefined Nothing) }
+newInternalError' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> InternalError
+newInternalError'  customize = (InternalError <<< customize) { "message": Nothing }
 
 
 
 -- | A parameter specified in the request is not valid, is unsupported, or cannot be used.
 newtype InvalidParameterException = InvalidParameterException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeInvalidParameterException :: Newtype InvalidParameterException _
 derive instance repGenericInvalidParameterException :: Generic InvalidParameterException _
@@ -493,12 +492,12 @@ instance encodeInvalidParameterException :: Encode InvalidParameterException whe
 
 -- | Constructs InvalidParameterException from required parameters
 newInvalidParameterException :: InvalidParameterException
-newInvalidParameterException  = InvalidParameterException { "message": (NullOrUndefined Nothing) }
+newInvalidParameterException  = InvalidParameterException { "message": Nothing }
 
 -- | Constructs InvalidParameterException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidParameterException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> InvalidParameterException
-newInvalidParameterException'  customize = (InvalidParameterException <<< customize) { "message": (NullOrUndefined Nothing) }
+newInvalidParameterException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> InvalidParameterException
+newInvalidParameterException'  customize = (InvalidParameterException <<< customize) { "message": Nothing }
 
 
 
@@ -544,7 +543,7 @@ instance encodeMaxResults :: Encode MaxResults where encode = genericEncode opti
 
 -- | The request is missing a required parameter. Ensure that you have supplied all the required parameters for the request.
 newtype MissingRequiredParameterException = MissingRequiredParameterException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeMissingRequiredParameterException :: Newtype MissingRequiredParameterException _
 derive instance repGenericMissingRequiredParameterException :: Generic MissingRequiredParameterException _
@@ -554,12 +553,12 @@ instance encodeMissingRequiredParameterException :: Encode MissingRequiredParame
 
 -- | Constructs MissingRequiredParameterException from required parameters
 newMissingRequiredParameterException :: MissingRequiredParameterException
-newMissingRequiredParameterException  = MissingRequiredParameterException { "message": (NullOrUndefined Nothing) }
+newMissingRequiredParameterException  = MissingRequiredParameterException { "message": Nothing }
 
 -- | Constructs MissingRequiredParameterException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newMissingRequiredParameterException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> MissingRequiredParameterException
-newMissingRequiredParameterException'  customize = (MissingRequiredParameterException <<< customize) { "message": (NullOrUndefined Nothing) }
+newMissingRequiredParameterException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> MissingRequiredParameterException
+newMissingRequiredParameterException'  customize = (MissingRequiredParameterException <<< customize) { "message": Nothing }
 
 
 
@@ -575,7 +574,7 @@ instance encodeNextToken :: Encode NextToken where encode = genericEncode option
 
 -- | No connectors are available to handle this request. Please associate connector(s) and verify any existing connectors are healthy and can respond to requests.
 newtype NoConnectorsAvailableException = NoConnectorsAvailableException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeNoConnectorsAvailableException :: Newtype NoConnectorsAvailableException _
 derive instance repGenericNoConnectorsAvailableException :: Generic NoConnectorsAvailableException _
@@ -585,18 +584,18 @@ instance encodeNoConnectorsAvailableException :: Encode NoConnectorsAvailableExc
 
 -- | Constructs NoConnectorsAvailableException from required parameters
 newNoConnectorsAvailableException :: NoConnectorsAvailableException
-newNoConnectorsAvailableException  = NoConnectorsAvailableException { "message": (NullOrUndefined Nothing) }
+newNoConnectorsAvailableException  = NoConnectorsAvailableException { "message": Nothing }
 
 -- | Constructs NoConnectorsAvailableException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newNoConnectorsAvailableException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> NoConnectorsAvailableException
-newNoConnectorsAvailableException'  customize = (NoConnectorsAvailableException <<< customize) { "message": (NullOrUndefined Nothing) }
+newNoConnectorsAvailableException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> NoConnectorsAvailableException
+newNoConnectorsAvailableException'  customize = (NoConnectorsAvailableException <<< customize) { "message": Nothing }
 
 
 
 -- | The specified operation is not allowed. This error can occur for a number of reasons; for example, you might be trying to start a Replication Run before seed Replication Run.
 newtype OperationNotPermittedException = OperationNotPermittedException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeOperationNotPermittedException :: Newtype OperationNotPermittedException _
 derive instance repGenericOperationNotPermittedException :: Generic OperationNotPermittedException _
@@ -606,31 +605,31 @@ instance encodeOperationNotPermittedException :: Encode OperationNotPermittedExc
 
 -- | Constructs OperationNotPermittedException from required parameters
 newOperationNotPermittedException :: OperationNotPermittedException
-newOperationNotPermittedException  = OperationNotPermittedException { "message": (NullOrUndefined Nothing) }
+newOperationNotPermittedException  = OperationNotPermittedException { "message": Nothing }
 
 -- | Constructs OperationNotPermittedException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newOperationNotPermittedException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> OperationNotPermittedException
-newOperationNotPermittedException'  customize = (OperationNotPermittedException <<< customize) { "message": (NullOrUndefined Nothing) }
+newOperationNotPermittedException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> OperationNotPermittedException
+newOperationNotPermittedException'  customize = (OperationNotPermittedException <<< customize) { "message": Nothing }
 
 
 
 -- | Object representing a Replication Job
 newtype ReplicationJob = ReplicationJob 
-  { "replicationJobId" :: NullOrUndefined (ReplicationJobId)
-  , "serverId" :: NullOrUndefined (ServerId)
-  , "serverType" :: NullOrUndefined (ServerType)
-  , "vmServer" :: NullOrUndefined (VmServer)
-  , "seedReplicationTime" :: NullOrUndefined (Types.Timestamp)
-  , "frequency" :: NullOrUndefined (Frequency)
-  , "nextReplicationRunStartTime" :: NullOrUndefined (Types.Timestamp)
-  , "licenseType" :: NullOrUndefined (LicenseType)
-  , "roleName" :: NullOrUndefined (RoleName)
-  , "latestAmiId" :: NullOrUndefined (AmiId)
-  , "state" :: NullOrUndefined (ReplicationJobState)
-  , "statusMessage" :: NullOrUndefined (ReplicationJobStatusMessage)
-  , "description" :: NullOrUndefined (Description)
-  , "replicationRunList" :: NullOrUndefined (ReplicationRunList)
+  { "replicationJobId" :: Maybe (ReplicationJobId)
+  , "serverId" :: Maybe (ServerId)
+  , "serverType" :: Maybe (ServerType)
+  , "vmServer" :: Maybe (VmServer)
+  , "seedReplicationTime" :: Maybe (Types.Timestamp)
+  , "frequency" :: Maybe (Frequency)
+  , "nextReplicationRunStartTime" :: Maybe (Types.Timestamp)
+  , "licenseType" :: Maybe (LicenseType)
+  , "roleName" :: Maybe (RoleName)
+  , "latestAmiId" :: Maybe (AmiId)
+  , "state" :: Maybe (ReplicationJobState)
+  , "statusMessage" :: Maybe (ReplicationJobStatusMessage)
+  , "description" :: Maybe (Description)
+  , "replicationRunList" :: Maybe (ReplicationRunList)
   }
 derive instance newtypeReplicationJob :: Newtype ReplicationJob _
 derive instance repGenericReplicationJob :: Generic ReplicationJob _
@@ -640,18 +639,18 @@ instance encodeReplicationJob :: Encode ReplicationJob where encode = genericEnc
 
 -- | Constructs ReplicationJob from required parameters
 newReplicationJob :: ReplicationJob
-newReplicationJob  = ReplicationJob { "description": (NullOrUndefined Nothing), "frequency": (NullOrUndefined Nothing), "latestAmiId": (NullOrUndefined Nothing), "licenseType": (NullOrUndefined Nothing), "nextReplicationRunStartTime": (NullOrUndefined Nothing), "replicationJobId": (NullOrUndefined Nothing), "replicationRunList": (NullOrUndefined Nothing), "roleName": (NullOrUndefined Nothing), "seedReplicationTime": (NullOrUndefined Nothing), "serverId": (NullOrUndefined Nothing), "serverType": (NullOrUndefined Nothing), "state": (NullOrUndefined Nothing), "statusMessage": (NullOrUndefined Nothing), "vmServer": (NullOrUndefined Nothing) }
+newReplicationJob  = ReplicationJob { "description": Nothing, "frequency": Nothing, "latestAmiId": Nothing, "licenseType": Nothing, "nextReplicationRunStartTime": Nothing, "replicationJobId": Nothing, "replicationRunList": Nothing, "roleName": Nothing, "seedReplicationTime": Nothing, "serverId": Nothing, "serverType": Nothing, "state": Nothing, "statusMessage": Nothing, "vmServer": Nothing }
 
 -- | Constructs ReplicationJob's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newReplicationJob' :: ( { "replicationJobId" :: NullOrUndefined (ReplicationJobId) , "serverId" :: NullOrUndefined (ServerId) , "serverType" :: NullOrUndefined (ServerType) , "vmServer" :: NullOrUndefined (VmServer) , "seedReplicationTime" :: NullOrUndefined (Types.Timestamp) , "frequency" :: NullOrUndefined (Frequency) , "nextReplicationRunStartTime" :: NullOrUndefined (Types.Timestamp) , "licenseType" :: NullOrUndefined (LicenseType) , "roleName" :: NullOrUndefined (RoleName) , "latestAmiId" :: NullOrUndefined (AmiId) , "state" :: NullOrUndefined (ReplicationJobState) , "statusMessage" :: NullOrUndefined (ReplicationJobStatusMessage) , "description" :: NullOrUndefined (Description) , "replicationRunList" :: NullOrUndefined (ReplicationRunList) } -> {"replicationJobId" :: NullOrUndefined (ReplicationJobId) , "serverId" :: NullOrUndefined (ServerId) , "serverType" :: NullOrUndefined (ServerType) , "vmServer" :: NullOrUndefined (VmServer) , "seedReplicationTime" :: NullOrUndefined (Types.Timestamp) , "frequency" :: NullOrUndefined (Frequency) , "nextReplicationRunStartTime" :: NullOrUndefined (Types.Timestamp) , "licenseType" :: NullOrUndefined (LicenseType) , "roleName" :: NullOrUndefined (RoleName) , "latestAmiId" :: NullOrUndefined (AmiId) , "state" :: NullOrUndefined (ReplicationJobState) , "statusMessage" :: NullOrUndefined (ReplicationJobStatusMessage) , "description" :: NullOrUndefined (Description) , "replicationRunList" :: NullOrUndefined (ReplicationRunList) } ) -> ReplicationJob
-newReplicationJob'  customize = (ReplicationJob <<< customize) { "description": (NullOrUndefined Nothing), "frequency": (NullOrUndefined Nothing), "latestAmiId": (NullOrUndefined Nothing), "licenseType": (NullOrUndefined Nothing), "nextReplicationRunStartTime": (NullOrUndefined Nothing), "replicationJobId": (NullOrUndefined Nothing), "replicationRunList": (NullOrUndefined Nothing), "roleName": (NullOrUndefined Nothing), "seedReplicationTime": (NullOrUndefined Nothing), "serverId": (NullOrUndefined Nothing), "serverType": (NullOrUndefined Nothing), "state": (NullOrUndefined Nothing), "statusMessage": (NullOrUndefined Nothing), "vmServer": (NullOrUndefined Nothing) }
+newReplicationJob' :: ( { "replicationJobId" :: Maybe (ReplicationJobId) , "serverId" :: Maybe (ServerId) , "serverType" :: Maybe (ServerType) , "vmServer" :: Maybe (VmServer) , "seedReplicationTime" :: Maybe (Types.Timestamp) , "frequency" :: Maybe (Frequency) , "nextReplicationRunStartTime" :: Maybe (Types.Timestamp) , "licenseType" :: Maybe (LicenseType) , "roleName" :: Maybe (RoleName) , "latestAmiId" :: Maybe (AmiId) , "state" :: Maybe (ReplicationJobState) , "statusMessage" :: Maybe (ReplicationJobStatusMessage) , "description" :: Maybe (Description) , "replicationRunList" :: Maybe (ReplicationRunList) } -> {"replicationJobId" :: Maybe (ReplicationJobId) , "serverId" :: Maybe (ServerId) , "serverType" :: Maybe (ServerType) , "vmServer" :: Maybe (VmServer) , "seedReplicationTime" :: Maybe (Types.Timestamp) , "frequency" :: Maybe (Frequency) , "nextReplicationRunStartTime" :: Maybe (Types.Timestamp) , "licenseType" :: Maybe (LicenseType) , "roleName" :: Maybe (RoleName) , "latestAmiId" :: Maybe (AmiId) , "state" :: Maybe (ReplicationJobState) , "statusMessage" :: Maybe (ReplicationJobStatusMessage) , "description" :: Maybe (Description) , "replicationRunList" :: Maybe (ReplicationRunList) } ) -> ReplicationJob
+newReplicationJob'  customize = (ReplicationJob <<< customize) { "description": Nothing, "frequency": Nothing, "latestAmiId": Nothing, "licenseType": Nothing, "nextReplicationRunStartTime": Nothing, "replicationJobId": Nothing, "replicationRunList": Nothing, "roleName": Nothing, "seedReplicationTime": Nothing, "serverId": Nothing, "serverType": Nothing, "state": Nothing, "statusMessage": Nothing, "vmServer": Nothing }
 
 
 
 -- | An active Replication Job already exists for the specified server.
 newtype ReplicationJobAlreadyExistsException = ReplicationJobAlreadyExistsException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeReplicationJobAlreadyExistsException :: Newtype ReplicationJobAlreadyExistsException _
 derive instance repGenericReplicationJobAlreadyExistsException :: Generic ReplicationJobAlreadyExistsException _
@@ -661,12 +660,12 @@ instance encodeReplicationJobAlreadyExistsException :: Encode ReplicationJobAlre
 
 -- | Constructs ReplicationJobAlreadyExistsException from required parameters
 newReplicationJobAlreadyExistsException :: ReplicationJobAlreadyExistsException
-newReplicationJobAlreadyExistsException  = ReplicationJobAlreadyExistsException { "message": (NullOrUndefined Nothing) }
+newReplicationJobAlreadyExistsException  = ReplicationJobAlreadyExistsException { "message": Nothing }
 
 -- | Constructs ReplicationJobAlreadyExistsException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newReplicationJobAlreadyExistsException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> ReplicationJobAlreadyExistsException
-newReplicationJobAlreadyExistsException'  customize = (ReplicationJobAlreadyExistsException <<< customize) { "message": (NullOrUndefined Nothing) }
+newReplicationJobAlreadyExistsException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> ReplicationJobAlreadyExistsException
+newReplicationJobAlreadyExistsException'  customize = (ReplicationJobAlreadyExistsException <<< customize) { "message": Nothing }
 
 
 
@@ -692,7 +691,7 @@ instance encodeReplicationJobList :: Encode ReplicationJobList where encode = ge
 
 -- | The specified Replication Job cannot be found.
 newtype ReplicationJobNotFoundException = ReplicationJobNotFoundException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeReplicationJobNotFoundException :: Newtype ReplicationJobNotFoundException _
 derive instance repGenericReplicationJobNotFoundException :: Generic ReplicationJobNotFoundException _
@@ -702,12 +701,12 @@ instance encodeReplicationJobNotFoundException :: Encode ReplicationJobNotFoundE
 
 -- | Constructs ReplicationJobNotFoundException from required parameters
 newReplicationJobNotFoundException :: ReplicationJobNotFoundException
-newReplicationJobNotFoundException  = ReplicationJobNotFoundException { "message": (NullOrUndefined Nothing) }
+newReplicationJobNotFoundException  = ReplicationJobNotFoundException { "message": Nothing }
 
 -- | Constructs ReplicationJobNotFoundException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newReplicationJobNotFoundException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> ReplicationJobNotFoundException
-newReplicationJobNotFoundException'  customize = (ReplicationJobNotFoundException <<< customize) { "message": (NullOrUndefined Nothing) }
+newReplicationJobNotFoundException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> ReplicationJobNotFoundException
+newReplicationJobNotFoundException'  customize = (ReplicationJobNotFoundException <<< customize) { "message": Nothing }
 
 
 
@@ -743,14 +742,14 @@ instance encodeReplicationJobTerminated :: Encode ReplicationJobTerminated where
 
 -- | Object representing a Replication Run
 newtype ReplicationRun = ReplicationRun 
-  { "replicationRunId" :: NullOrUndefined (ReplicationRunId)
-  , "state" :: NullOrUndefined (ReplicationRunState)
-  , "type" :: NullOrUndefined (ReplicationRunType)
-  , "statusMessage" :: NullOrUndefined (ReplicationRunStatusMessage)
-  , "amiId" :: NullOrUndefined (AmiId)
-  , "scheduledStartTime" :: NullOrUndefined (Types.Timestamp)
-  , "completedTime" :: NullOrUndefined (Types.Timestamp)
-  , "description" :: NullOrUndefined (Description)
+  { "replicationRunId" :: Maybe (ReplicationRunId)
+  , "state" :: Maybe (ReplicationRunState)
+  , "type" :: Maybe (ReplicationRunType)
+  , "statusMessage" :: Maybe (ReplicationRunStatusMessage)
+  , "amiId" :: Maybe (AmiId)
+  , "scheduledStartTime" :: Maybe (Types.Timestamp)
+  , "completedTime" :: Maybe (Types.Timestamp)
+  , "description" :: Maybe (Description)
   }
 derive instance newtypeReplicationRun :: Newtype ReplicationRun _
 derive instance repGenericReplicationRun :: Generic ReplicationRun _
@@ -760,12 +759,12 @@ instance encodeReplicationRun :: Encode ReplicationRun where encode = genericEnc
 
 -- | Constructs ReplicationRun from required parameters
 newReplicationRun :: ReplicationRun
-newReplicationRun  = ReplicationRun { "amiId": (NullOrUndefined Nothing), "completedTime": (NullOrUndefined Nothing), "description": (NullOrUndefined Nothing), "replicationRunId": (NullOrUndefined Nothing), "scheduledStartTime": (NullOrUndefined Nothing), "state": (NullOrUndefined Nothing), "statusMessage": (NullOrUndefined Nothing), "type": (NullOrUndefined Nothing) }
+newReplicationRun  = ReplicationRun { "amiId": Nothing, "completedTime": Nothing, "description": Nothing, "replicationRunId": Nothing, "scheduledStartTime": Nothing, "state": Nothing, "statusMessage": Nothing, "type": Nothing }
 
 -- | Constructs ReplicationRun's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newReplicationRun' :: ( { "replicationRunId" :: NullOrUndefined (ReplicationRunId) , "state" :: NullOrUndefined (ReplicationRunState) , "type" :: NullOrUndefined (ReplicationRunType) , "statusMessage" :: NullOrUndefined (ReplicationRunStatusMessage) , "amiId" :: NullOrUndefined (AmiId) , "scheduledStartTime" :: NullOrUndefined (Types.Timestamp) , "completedTime" :: NullOrUndefined (Types.Timestamp) , "description" :: NullOrUndefined (Description) } -> {"replicationRunId" :: NullOrUndefined (ReplicationRunId) , "state" :: NullOrUndefined (ReplicationRunState) , "type" :: NullOrUndefined (ReplicationRunType) , "statusMessage" :: NullOrUndefined (ReplicationRunStatusMessage) , "amiId" :: NullOrUndefined (AmiId) , "scheduledStartTime" :: NullOrUndefined (Types.Timestamp) , "completedTime" :: NullOrUndefined (Types.Timestamp) , "description" :: NullOrUndefined (Description) } ) -> ReplicationRun
-newReplicationRun'  customize = (ReplicationRun <<< customize) { "amiId": (NullOrUndefined Nothing), "completedTime": (NullOrUndefined Nothing), "description": (NullOrUndefined Nothing), "replicationRunId": (NullOrUndefined Nothing), "scheduledStartTime": (NullOrUndefined Nothing), "state": (NullOrUndefined Nothing), "statusMessage": (NullOrUndefined Nothing), "type": (NullOrUndefined Nothing) }
+newReplicationRun' :: ( { "replicationRunId" :: Maybe (ReplicationRunId) , "state" :: Maybe (ReplicationRunState) , "type" :: Maybe (ReplicationRunType) , "statusMessage" :: Maybe (ReplicationRunStatusMessage) , "amiId" :: Maybe (AmiId) , "scheduledStartTime" :: Maybe (Types.Timestamp) , "completedTime" :: Maybe (Types.Timestamp) , "description" :: Maybe (Description) } -> {"replicationRunId" :: Maybe (ReplicationRunId) , "state" :: Maybe (ReplicationRunState) , "type" :: Maybe (ReplicationRunType) , "statusMessage" :: Maybe (ReplicationRunStatusMessage) , "amiId" :: Maybe (AmiId) , "scheduledStartTime" :: Maybe (Types.Timestamp) , "completedTime" :: Maybe (Types.Timestamp) , "description" :: Maybe (Description) } ) -> ReplicationRun
+newReplicationRun'  customize = (ReplicationRun <<< customize) { "amiId": Nothing, "completedTime": Nothing, "description": Nothing, "replicationRunId": Nothing, "scheduledStartTime": Nothing, "state": Nothing, "statusMessage": Nothing, "type": Nothing }
 
 
 
@@ -781,7 +780,7 @@ instance encodeReplicationRunId :: Encode ReplicationRunId where encode = generi
 
 -- | This user has exceeded the maximum allowed Replication Run limit.
 newtype ReplicationRunLimitExceededException = ReplicationRunLimitExceededException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeReplicationRunLimitExceededException :: Newtype ReplicationRunLimitExceededException _
 derive instance repGenericReplicationRunLimitExceededException :: Generic ReplicationRunLimitExceededException _
@@ -791,12 +790,12 @@ instance encodeReplicationRunLimitExceededException :: Encode ReplicationRunLimi
 
 -- | Constructs ReplicationRunLimitExceededException from required parameters
 newReplicationRunLimitExceededException :: ReplicationRunLimitExceededException
-newReplicationRunLimitExceededException  = ReplicationRunLimitExceededException { "message": (NullOrUndefined Nothing) }
+newReplicationRunLimitExceededException  = ReplicationRunLimitExceededException { "message": Nothing }
 
 -- | Constructs ReplicationRunLimitExceededException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newReplicationRunLimitExceededException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> ReplicationRunLimitExceededException
-newReplicationRunLimitExceededException'  customize = (ReplicationRunLimitExceededException <<< customize) { "message": (NullOrUndefined Nothing) }
+newReplicationRunLimitExceededException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> ReplicationRunLimitExceededException
+newReplicationRunLimitExceededException'  customize = (ReplicationRunLimitExceededException <<< customize) { "message": Nothing }
 
 
 
@@ -852,11 +851,11 @@ instance encodeRoleName :: Encode RoleName where encode = genericEncode options
 
 -- | Object representing a server
 newtype Server = Server 
-  { "serverId" :: NullOrUndefined (ServerId)
-  , "serverType" :: NullOrUndefined (ServerType)
-  , "vmServer" :: NullOrUndefined (VmServer)
-  , "replicationJobId" :: NullOrUndefined (ReplicationJobId)
-  , "replicationJobTerminated" :: NullOrUndefined (ReplicationJobTerminated)
+  { "serverId" :: Maybe (ServerId)
+  , "serverType" :: Maybe (ServerType)
+  , "vmServer" :: Maybe (VmServer)
+  , "replicationJobId" :: Maybe (ReplicationJobId)
+  , "replicationJobTerminated" :: Maybe (ReplicationJobTerminated)
   }
 derive instance newtypeServer :: Newtype Server _
 derive instance repGenericServer :: Generic Server _
@@ -866,18 +865,18 @@ instance encodeServer :: Encode Server where encode = genericEncode options
 
 -- | Constructs Server from required parameters
 newServer :: Server
-newServer  = Server { "replicationJobId": (NullOrUndefined Nothing), "replicationJobTerminated": (NullOrUndefined Nothing), "serverId": (NullOrUndefined Nothing), "serverType": (NullOrUndefined Nothing), "vmServer": (NullOrUndefined Nothing) }
+newServer  = Server { "replicationJobId": Nothing, "replicationJobTerminated": Nothing, "serverId": Nothing, "serverType": Nothing, "vmServer": Nothing }
 
 -- | Constructs Server's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newServer' :: ( { "serverId" :: NullOrUndefined (ServerId) , "serverType" :: NullOrUndefined (ServerType) , "vmServer" :: NullOrUndefined (VmServer) , "replicationJobId" :: NullOrUndefined (ReplicationJobId) , "replicationJobTerminated" :: NullOrUndefined (ReplicationJobTerminated) } -> {"serverId" :: NullOrUndefined (ServerId) , "serverType" :: NullOrUndefined (ServerType) , "vmServer" :: NullOrUndefined (VmServer) , "replicationJobId" :: NullOrUndefined (ReplicationJobId) , "replicationJobTerminated" :: NullOrUndefined (ReplicationJobTerminated) } ) -> Server
-newServer'  customize = (Server <<< customize) { "replicationJobId": (NullOrUndefined Nothing), "replicationJobTerminated": (NullOrUndefined Nothing), "serverId": (NullOrUndefined Nothing), "serverType": (NullOrUndefined Nothing), "vmServer": (NullOrUndefined Nothing) }
+newServer' :: ( { "serverId" :: Maybe (ServerId) , "serverType" :: Maybe (ServerType) , "vmServer" :: Maybe (VmServer) , "replicationJobId" :: Maybe (ReplicationJobId) , "replicationJobTerminated" :: Maybe (ReplicationJobTerminated) } -> {"serverId" :: Maybe (ServerId) , "serverType" :: Maybe (ServerType) , "vmServer" :: Maybe (VmServer) , "replicationJobId" :: Maybe (ReplicationJobId) , "replicationJobTerminated" :: Maybe (ReplicationJobTerminated) } ) -> Server
+newServer'  customize = (Server <<< customize) { "replicationJobId": Nothing, "replicationJobTerminated": Nothing, "serverId": Nothing, "serverType": Nothing, "vmServer": Nothing }
 
 
 
 -- | The provided server cannot be replicated.
 newtype ServerCannotBeReplicatedException = ServerCannotBeReplicatedException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeServerCannotBeReplicatedException :: Newtype ServerCannotBeReplicatedException _
 derive instance repGenericServerCannotBeReplicatedException :: Generic ServerCannotBeReplicatedException _
@@ -887,12 +886,12 @@ instance encodeServerCannotBeReplicatedException :: Encode ServerCannotBeReplica
 
 -- | Constructs ServerCannotBeReplicatedException from required parameters
 newServerCannotBeReplicatedException :: ServerCannotBeReplicatedException
-newServerCannotBeReplicatedException  = ServerCannotBeReplicatedException { "message": (NullOrUndefined Nothing) }
+newServerCannotBeReplicatedException  = ServerCannotBeReplicatedException { "message": Nothing }
 
 -- | Constructs ServerCannotBeReplicatedException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newServerCannotBeReplicatedException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> ServerCannotBeReplicatedException
-newServerCannotBeReplicatedException'  customize = (ServerCannotBeReplicatedException <<< customize) { "message": (NullOrUndefined Nothing) }
+newServerCannotBeReplicatedException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> ServerCannotBeReplicatedException
+newServerCannotBeReplicatedException'  customize = (ServerCannotBeReplicatedException <<< customize) { "message": Nothing }
 
 
 
@@ -938,7 +937,7 @@ instance encodeServerType :: Encode ServerType where encode = genericEncode opti
 
 newtype StartOnDemandReplicationRunRequest = StartOnDemandReplicationRunRequest 
   { "replicationJobId" :: (ReplicationJobId)
-  , "description" :: NullOrUndefined (Description)
+  , "description" :: Maybe (Description)
   }
 derive instance newtypeStartOnDemandReplicationRunRequest :: Newtype StartOnDemandReplicationRunRequest _
 derive instance repGenericStartOnDemandReplicationRunRequest :: Generic StartOnDemandReplicationRunRequest _
@@ -948,17 +947,17 @@ instance encodeStartOnDemandReplicationRunRequest :: Encode StartOnDemandReplica
 
 -- | Constructs StartOnDemandReplicationRunRequest from required parameters
 newStartOnDemandReplicationRunRequest :: ReplicationJobId -> StartOnDemandReplicationRunRequest
-newStartOnDemandReplicationRunRequest _replicationJobId = StartOnDemandReplicationRunRequest { "replicationJobId": _replicationJobId, "description": (NullOrUndefined Nothing) }
+newStartOnDemandReplicationRunRequest _replicationJobId = StartOnDemandReplicationRunRequest { "replicationJobId": _replicationJobId, "description": Nothing }
 
 -- | Constructs StartOnDemandReplicationRunRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStartOnDemandReplicationRunRequest' :: ReplicationJobId -> ( { "replicationJobId" :: (ReplicationJobId) , "description" :: NullOrUndefined (Description) } -> {"replicationJobId" :: (ReplicationJobId) , "description" :: NullOrUndefined (Description) } ) -> StartOnDemandReplicationRunRequest
-newStartOnDemandReplicationRunRequest' _replicationJobId customize = (StartOnDemandReplicationRunRequest <<< customize) { "replicationJobId": _replicationJobId, "description": (NullOrUndefined Nothing) }
+newStartOnDemandReplicationRunRequest' :: ReplicationJobId -> ( { "replicationJobId" :: (ReplicationJobId) , "description" :: Maybe (Description) } -> {"replicationJobId" :: (ReplicationJobId) , "description" :: Maybe (Description) } ) -> StartOnDemandReplicationRunRequest
+newStartOnDemandReplicationRunRequest' _replicationJobId customize = (StartOnDemandReplicationRunRequest <<< customize) { "replicationJobId": _replicationJobId, "description": Nothing }
 
 
 
 newtype StartOnDemandReplicationRunResponse = StartOnDemandReplicationRunResponse 
-  { "replicationRunId" :: NullOrUndefined (ReplicationRunId)
+  { "replicationRunId" :: Maybe (ReplicationRunId)
   }
 derive instance newtypeStartOnDemandReplicationRunResponse :: Newtype StartOnDemandReplicationRunResponse _
 derive instance repGenericStartOnDemandReplicationRunResponse :: Generic StartOnDemandReplicationRunResponse _
@@ -968,18 +967,18 @@ instance encodeStartOnDemandReplicationRunResponse :: Encode StartOnDemandReplic
 
 -- | Constructs StartOnDemandReplicationRunResponse from required parameters
 newStartOnDemandReplicationRunResponse :: StartOnDemandReplicationRunResponse
-newStartOnDemandReplicationRunResponse  = StartOnDemandReplicationRunResponse { "replicationRunId": (NullOrUndefined Nothing) }
+newStartOnDemandReplicationRunResponse  = StartOnDemandReplicationRunResponse { "replicationRunId": Nothing }
 
 -- | Constructs StartOnDemandReplicationRunResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStartOnDemandReplicationRunResponse' :: ( { "replicationRunId" :: NullOrUndefined (ReplicationRunId) } -> {"replicationRunId" :: NullOrUndefined (ReplicationRunId) } ) -> StartOnDemandReplicationRunResponse
-newStartOnDemandReplicationRunResponse'  customize = (StartOnDemandReplicationRunResponse <<< customize) { "replicationRunId": (NullOrUndefined Nothing) }
+newStartOnDemandReplicationRunResponse' :: ( { "replicationRunId" :: Maybe (ReplicationRunId) } -> {"replicationRunId" :: Maybe (ReplicationRunId) } ) -> StartOnDemandReplicationRunResponse
+newStartOnDemandReplicationRunResponse'  customize = (StartOnDemandReplicationRunResponse <<< customize) { "replicationRunId": Nothing }
 
 
 
 -- | This user does not have permissions to perform this operation.
 newtype UnauthorizedOperationException = UnauthorizedOperationException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeUnauthorizedOperationException :: Newtype UnauthorizedOperationException _
 derive instance repGenericUnauthorizedOperationException :: Generic UnauthorizedOperationException _
@@ -989,22 +988,22 @@ instance encodeUnauthorizedOperationException :: Encode UnauthorizedOperationExc
 
 -- | Constructs UnauthorizedOperationException from required parameters
 newUnauthorizedOperationException :: UnauthorizedOperationException
-newUnauthorizedOperationException  = UnauthorizedOperationException { "message": (NullOrUndefined Nothing) }
+newUnauthorizedOperationException  = UnauthorizedOperationException { "message": Nothing }
 
 -- | Constructs UnauthorizedOperationException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUnauthorizedOperationException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> UnauthorizedOperationException
-newUnauthorizedOperationException'  customize = (UnauthorizedOperationException <<< customize) { "message": (NullOrUndefined Nothing) }
+newUnauthorizedOperationException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> UnauthorizedOperationException
+newUnauthorizedOperationException'  customize = (UnauthorizedOperationException <<< customize) { "message": Nothing }
 
 
 
 newtype UpdateReplicationJobRequest = UpdateReplicationJobRequest 
   { "replicationJobId" :: (ReplicationJobId)
-  , "frequency" :: NullOrUndefined (Frequency)
-  , "nextReplicationRunStartTime" :: NullOrUndefined (Types.Timestamp)
-  , "licenseType" :: NullOrUndefined (LicenseType)
-  , "roleName" :: NullOrUndefined (RoleName)
-  , "description" :: NullOrUndefined (Description)
+  , "frequency" :: Maybe (Frequency)
+  , "nextReplicationRunStartTime" :: Maybe (Types.Timestamp)
+  , "licenseType" :: Maybe (LicenseType)
+  , "roleName" :: Maybe (RoleName)
+  , "description" :: Maybe (Description)
   }
 derive instance newtypeUpdateReplicationJobRequest :: Newtype UpdateReplicationJobRequest _
 derive instance repGenericUpdateReplicationJobRequest :: Generic UpdateReplicationJobRequest _
@@ -1014,12 +1013,12 @@ instance encodeUpdateReplicationJobRequest :: Encode UpdateReplicationJobRequest
 
 -- | Constructs UpdateReplicationJobRequest from required parameters
 newUpdateReplicationJobRequest :: ReplicationJobId -> UpdateReplicationJobRequest
-newUpdateReplicationJobRequest _replicationJobId = UpdateReplicationJobRequest { "replicationJobId": _replicationJobId, "description": (NullOrUndefined Nothing), "frequency": (NullOrUndefined Nothing), "licenseType": (NullOrUndefined Nothing), "nextReplicationRunStartTime": (NullOrUndefined Nothing), "roleName": (NullOrUndefined Nothing) }
+newUpdateReplicationJobRequest _replicationJobId = UpdateReplicationJobRequest { "replicationJobId": _replicationJobId, "description": Nothing, "frequency": Nothing, "licenseType": Nothing, "nextReplicationRunStartTime": Nothing, "roleName": Nothing }
 
 -- | Constructs UpdateReplicationJobRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUpdateReplicationJobRequest' :: ReplicationJobId -> ( { "replicationJobId" :: (ReplicationJobId) , "frequency" :: NullOrUndefined (Frequency) , "nextReplicationRunStartTime" :: NullOrUndefined (Types.Timestamp) , "licenseType" :: NullOrUndefined (LicenseType) , "roleName" :: NullOrUndefined (RoleName) , "description" :: NullOrUndefined (Description) } -> {"replicationJobId" :: (ReplicationJobId) , "frequency" :: NullOrUndefined (Frequency) , "nextReplicationRunStartTime" :: NullOrUndefined (Types.Timestamp) , "licenseType" :: NullOrUndefined (LicenseType) , "roleName" :: NullOrUndefined (RoleName) , "description" :: NullOrUndefined (Description) } ) -> UpdateReplicationJobRequest
-newUpdateReplicationJobRequest' _replicationJobId customize = (UpdateReplicationJobRequest <<< customize) { "replicationJobId": _replicationJobId, "description": (NullOrUndefined Nothing), "frequency": (NullOrUndefined Nothing), "licenseType": (NullOrUndefined Nothing), "nextReplicationRunStartTime": (NullOrUndefined Nothing), "roleName": (NullOrUndefined Nothing) }
+newUpdateReplicationJobRequest' :: ReplicationJobId -> ( { "replicationJobId" :: (ReplicationJobId) , "frequency" :: Maybe (Frequency) , "nextReplicationRunStartTime" :: Maybe (Types.Timestamp) , "licenseType" :: Maybe (LicenseType) , "roleName" :: Maybe (RoleName) , "description" :: Maybe (Description) } -> {"replicationJobId" :: (ReplicationJobId) , "frequency" :: Maybe (Frequency) , "nextReplicationRunStartTime" :: Maybe (Types.Timestamp) , "licenseType" :: Maybe (LicenseType) , "roleName" :: Maybe (RoleName) , "description" :: Maybe (Description) } ) -> UpdateReplicationJobRequest
+newUpdateReplicationJobRequest' _replicationJobId customize = (UpdateReplicationJobRequest <<< customize) { "replicationJobId": _replicationJobId, "description": Nothing, "frequency": Nothing, "licenseType": Nothing, "nextReplicationRunStartTime": Nothing, "roleName": Nothing }
 
 
 
@@ -1094,11 +1093,11 @@ instance encodeVmPath :: Encode VmPath where encode = genericEncode options
 
 -- | Object representing a VM server
 newtype VmServer = VmServer 
-  { "vmServerAddress" :: NullOrUndefined (VmServerAddress)
-  , "vmName" :: NullOrUndefined (VmName)
-  , "vmManagerName" :: NullOrUndefined (VmManagerName)
-  , "vmManagerType" :: NullOrUndefined (VmManagerType)
-  , "vmPath" :: NullOrUndefined (VmPath)
+  { "vmServerAddress" :: Maybe (VmServerAddress)
+  , "vmName" :: Maybe (VmName)
+  , "vmManagerName" :: Maybe (VmManagerName)
+  , "vmManagerType" :: Maybe (VmManagerType)
+  , "vmPath" :: Maybe (VmPath)
   }
 derive instance newtypeVmServer :: Newtype VmServer _
 derive instance repGenericVmServer :: Generic VmServer _
@@ -1108,19 +1107,19 @@ instance encodeVmServer :: Encode VmServer where encode = genericEncode options
 
 -- | Constructs VmServer from required parameters
 newVmServer :: VmServer
-newVmServer  = VmServer { "vmManagerName": (NullOrUndefined Nothing), "vmManagerType": (NullOrUndefined Nothing), "vmName": (NullOrUndefined Nothing), "vmPath": (NullOrUndefined Nothing), "vmServerAddress": (NullOrUndefined Nothing) }
+newVmServer  = VmServer { "vmManagerName": Nothing, "vmManagerType": Nothing, "vmName": Nothing, "vmPath": Nothing, "vmServerAddress": Nothing }
 
 -- | Constructs VmServer's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newVmServer' :: ( { "vmServerAddress" :: NullOrUndefined (VmServerAddress) , "vmName" :: NullOrUndefined (VmName) , "vmManagerName" :: NullOrUndefined (VmManagerName) , "vmManagerType" :: NullOrUndefined (VmManagerType) , "vmPath" :: NullOrUndefined (VmPath) } -> {"vmServerAddress" :: NullOrUndefined (VmServerAddress) , "vmName" :: NullOrUndefined (VmName) , "vmManagerName" :: NullOrUndefined (VmManagerName) , "vmManagerType" :: NullOrUndefined (VmManagerType) , "vmPath" :: NullOrUndefined (VmPath) } ) -> VmServer
-newVmServer'  customize = (VmServer <<< customize) { "vmManagerName": (NullOrUndefined Nothing), "vmManagerType": (NullOrUndefined Nothing), "vmName": (NullOrUndefined Nothing), "vmPath": (NullOrUndefined Nothing), "vmServerAddress": (NullOrUndefined Nothing) }
+newVmServer' :: ( { "vmServerAddress" :: Maybe (VmServerAddress) , "vmName" :: Maybe (VmName) , "vmManagerName" :: Maybe (VmManagerName) , "vmManagerType" :: Maybe (VmManagerType) , "vmPath" :: Maybe (VmPath) } -> {"vmServerAddress" :: Maybe (VmServerAddress) , "vmName" :: Maybe (VmName) , "vmManagerName" :: Maybe (VmManagerName) , "vmManagerType" :: Maybe (VmManagerType) , "vmPath" :: Maybe (VmPath) } ) -> VmServer
+newVmServer'  customize = (VmServer <<< customize) { "vmManagerName": Nothing, "vmManagerType": Nothing, "vmName": Nothing, "vmPath": Nothing, "vmServerAddress": Nothing }
 
 
 
 -- | Object representing a server's location
 newtype VmServerAddress = VmServerAddress 
-  { "vmManagerId" :: NullOrUndefined (VmManagerId)
-  , "vmId" :: NullOrUndefined (VmId)
+  { "vmManagerId" :: Maybe (VmManagerId)
+  , "vmId" :: Maybe (VmId)
   }
 derive instance newtypeVmServerAddress :: Newtype VmServerAddress _
 derive instance repGenericVmServerAddress :: Generic VmServerAddress _
@@ -1130,10 +1129,10 @@ instance encodeVmServerAddress :: Encode VmServerAddress where encode = genericE
 
 -- | Constructs VmServerAddress from required parameters
 newVmServerAddress :: VmServerAddress
-newVmServerAddress  = VmServerAddress { "vmId": (NullOrUndefined Nothing), "vmManagerId": (NullOrUndefined Nothing) }
+newVmServerAddress  = VmServerAddress { "vmId": Nothing, "vmManagerId": Nothing }
 
 -- | Constructs VmServerAddress's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newVmServerAddress' :: ( { "vmManagerId" :: NullOrUndefined (VmManagerId) , "vmId" :: NullOrUndefined (VmId) } -> {"vmManagerId" :: NullOrUndefined (VmManagerId) , "vmId" :: NullOrUndefined (VmId) } ) -> VmServerAddress
-newVmServerAddress'  customize = (VmServerAddress <<< customize) { "vmId": (NullOrUndefined Nothing), "vmManagerId": (NullOrUndefined Nothing) }
+newVmServerAddress' :: ( { "vmManagerId" :: Maybe (VmManagerId) , "vmId" :: Maybe (VmId) } -> {"vmManagerId" :: Maybe (VmManagerId) , "vmId" :: Maybe (VmId) } ) -> VmServerAddress
+newVmServerAddress'  customize = (VmServerAddress <<< customize) { "vmId": Nothing, "vmManagerId": Nothing }
 
